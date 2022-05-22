@@ -9,6 +9,9 @@ public class Main {
         // Array to split user input in long string format
         String splited[];
 
+        // Declaring variable for student
+        int grade = 0;
+
         Scanner myObj = new Scanner(System.in); // Scanner for user input
 
 
@@ -33,8 +36,25 @@ public class Main {
         //Getting Student OBJ
         Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
 
+
+
+        //Check Score int not negative not greater than 100
+        if(grade >= 0 && grade <= 100){
+            grade = Integer.parseInt(splited[3]);
+        }
+
+
+
+
         System.out.println(student.getPid());
 
+        /**
+         *  TESTING VALIDATE STUDENT
+         */
+
+        ValidateStudentInformation val = new ValidateStudentInformation(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
+
+        System.out.println(val.showResult());
 
 
 
