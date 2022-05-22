@@ -6,10 +6,13 @@ public class Student {
     private String firstName;
     private String lastName;
     private int pid;
+
     private Grade grade;
-    public String getFirstName() {
-        return firstName;
-    }
+
+
+
+
+    public String getFirstName() {return firstName;}
     public String getLastName() {
         return lastName;
     }
@@ -18,5 +21,17 @@ public class Student {
     }
     public Grade getGrade() {
         return grade;
+    }
+
+    // Constructor for Student
+
+    public Student(String firstName, String lastName, int pid, int grade) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.pid = pid;
+
+        this.grade = new Grade(grade);
+
+        System.out.println(this.grade.getLetterGrade());
     }
 }
