@@ -33,7 +33,7 @@ public class ValidateStudentInformation {
      * 4.String.contains(".") to check if contains a dot
      */
     public void validateLastName() {
-        if(this.lastName.matches("[a-zA-Z]+") && Character.isUpperCase(this.lastName.charAt(0)) && !this.lastName.isBlank() && this.lastName.contains(".")){
+        if(this.lastName.matches("[a-zA-Z]+") && Character.isUpperCase(this.lastName.charAt(0)) && !this.lastName.isBlank()){
             LNBol = true;
         }else LNBol = false;
     }
@@ -56,10 +56,29 @@ public class ValidateStudentInformation {
     }
 
 
-    // Validate Show
-    public boolean showResult(){
-        return pidBol;
+    /**
+     * Checks for all boolean to be true to create Student object
+     */
+    public boolean studentMeetsRequirements(){
+        if(FNBol && LNBol && pidBol && gradeBol){
+            return true;
+        }else return false;
     }
+
+
+//    Validate Show for testing purposes only
+//    public boolean showFN(){
+//        return FNBol;
+//    }
+//    public boolean showLN(){
+//            return LNBol;
+//        }
+//    public boolean showGrade(){
+//        return gradeBol;
+//    }
+//    public boolean showPIDBol(){
+//        return pidBol;
+//    }
 
     // Constructor
     public ValidateStudentInformation(String firstName, String lastName, int pid, int grade){
@@ -69,6 +88,8 @@ public class ValidateStudentInformation {
         this.grade = grade;
 
         // Calling validator setters
+        validateFirstName();
+        validateLastName();
         validatePID();
         validateGrade();
 

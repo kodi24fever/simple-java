@@ -9,9 +9,6 @@ public class Student {
 
     private Grade grade;
 
-
-
-
     public String getFirstName() {return firstName;}
     public String getLastName() {
         return lastName;
@@ -23,8 +20,13 @@ public class Student {
         return grade;
     }
 
-    // Constructor for Student
 
+
+    public String toString() {
+        return this.firstName + " " + this.lastName + " " + this.pid + " " + this.grade.getLetterGrade();
+    }
+
+    // Constructor for Student
     public Student(String firstName, String lastName, int pid, int grade) {
         this.firstName = firstName;
         this.lastName = lastName;
