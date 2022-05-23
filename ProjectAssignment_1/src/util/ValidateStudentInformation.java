@@ -9,7 +9,6 @@ public class ValidateStudentInformation {
     private boolean FNBol;
     private boolean LNBol;
     private boolean pidBol;
-
     private boolean gradeBol;
 
 
@@ -22,7 +21,7 @@ public class ValidateStudentInformation {
         }else this.pidBol = false;
     }
 
-
+    // Checks if grade is in the range of 0 to 100 including 0 and 100
     public void validateGrade() {
         if(this.grade >= 0 && this.grade <= 100){
             gradeBol = true;
@@ -42,7 +41,7 @@ public class ValidateStudentInformation {
         this.pid = pid;
         this.grade = grade;
 
-        // Calling validator setters 
+        // Calling validator setters
         validatePID();
         validateGrade();
 
