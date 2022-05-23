@@ -17,7 +17,7 @@ public class ValidateStudentInformation {
     public void validatePID(){
         String pid = Integer.toString(this.pid);
 
-        if( String.valueOf(this.pid).length() == 7 && !(pid.startsWith("0")) || pid.startsWith("00")){
+        if(String.valueOf(this.pid).length() == 7 && !(pid.startsWith("0")) || pid.startsWith("00")){
             this.pidBol = true;
         }else this.pidBol = false;
     }
@@ -32,11 +32,8 @@ public class ValidateStudentInformation {
 
     // Validate Show
     public boolean showResult(){
-        return gradeBol;
+        return pidBol;
     }
-
-
-
 
     // Constructor
     public ValidateStudentInformation(String firstName, String lastName, int pid, int grade){
@@ -45,11 +42,9 @@ public class ValidateStudentInformation {
         this.pid = pid;
         this.grade = grade;
 
+        // Calling validator setters 
         validatePID();
         validateGrade();
-
-
-
 
     }
 }
