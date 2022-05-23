@@ -15,43 +15,40 @@ public class Main {
 
         Scanner myObj = new Scanner(System.in); // Scanner for user input
 
-        // This message should show when student list is empty
-//        System.out.println("Welcome to my grade book!");
-//        System.out.println("Please enter the information of the first student using the following format:");
-//        System.out.println("\"firstName lastName PID grade\"");
-//        System.out.println("Press Enter when you are done");
+        if(studentsList.size() == 0){
+            // This message should show when student list is empty
+            System.out.println("Welcome to my grade book!");
+            System.out.println("Please enter the information of the first student using the following format:");
+            System.out.println("\"firstName lastName PID grade\"");
+            System.out.println("Press Enter when you are done");
+
+            String wholeStudent = myObj.nextLine();
+            splited = wholeStudent.split(" ");
+            System.out.println("Username is: " + wholeStudent + splited[0] + splited[1] + splited[2]);
+
+            //Getting Student OBJ
+            Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
+
+            /**
+             *  Validate student information
+             */
+            ValidateStudentInformation val = new ValidateStudentInformation(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
+
+            if(val.studentMeetsRequirements()){
+                studentsList.add(student);
+                System.out.println(studentsList);
+            }else System.out.println("Sorry Try again!");
+
+
+
+        } else System.out.println("You added the student Buy!");
+
+
 
 
         System.out.println("Please enter the information of the next student in the same format.");
         System.out.println("if there is no more students, please enter the keyword \"DONE\"");
         System.out.println("Press Enter when you are done");
-        String wholeStudent = myObj.nextLine();
-
-        splited = wholeStudent.split(" ");
-
-        System.out.println("Username is: " + wholeStudent + splited[0] + splited[1] + splited[2]);
-
-
-        //Getting Student OBJ
-        Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
-
-        /**
-         *  TESTING VALIDATE STUDENT
-         */
-
-        ValidateStudentInformation val = new ValidateStudentInformation(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
-
-//        System.out.println(val.showFN());
-//        System.out.println(val.showLN());
-//        System.out.println(val.showGrade());
-//        System.out.println(val.showPIDBol());
-//        System.out.println(val.studentMeetsRequirements());
-
-        if(val.studentMeetsRequirements()){
-            studentsList.add(student);
-            System.out.println(studentsList);
-        }else System.out.println("Sorry Try again!");
-
 
     }
 
