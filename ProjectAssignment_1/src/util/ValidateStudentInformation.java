@@ -6,6 +6,7 @@ public class ValidateStudentInformation {
     private int pid;
     private int grade;
 
+    // Boolean variables to check if student info meets requirements
     private boolean FNBol;
     private boolean LNBol;
     private boolean pidBol;
@@ -38,7 +39,6 @@ public class ValidateStudentInformation {
         }else LNBol = false;
     }
 
-
     // Checks for pid if is 7 digits number and does not start with 0
     public void validatePID(){
         String pid = Integer.toString(this.pid);
@@ -55,7 +55,6 @@ public class ValidateStudentInformation {
         }else gradeBol = false;
     }
 
-
     /**
      * Checks for all boolean to be true to create Student object
      */
@@ -64,7 +63,6 @@ public class ValidateStudentInformation {
             return true;
         }else return false;
     }
-
 
 //    Validate Show for testing purposes only
 //    public boolean showFN(){
@@ -80,7 +78,7 @@ public class ValidateStudentInformation {
 //        return pidBol;
 //    }
 
-    // Constructor
+    // Constructor for student information validation
     public ValidateStudentInformation(String firstName, String lastName, int pid, int grade){
         this.firstName = firstName;
         this.lastName = lastName;
@@ -92,6 +90,5 @@ public class ValidateStudentInformation {
         validateLastName();
         validatePID();
         validateGrade();
-
     }
 }

@@ -7,13 +7,11 @@ import java.util.ArrayList; // Import arrrayList to create studnets
 public class Main {
     public static void main(String[] args) {
 
+        // ArrayList of students
         ArrayList<Student> studentsList = new ArrayList<Student>();
 
         // Array to split user input in long string format
         String splited[];
-
-        // Declaring variable for student
-        int grade = 0;
 
         Scanner myObj = new Scanner(System.in); // Scanner for user input
 
@@ -37,9 +35,6 @@ public class Main {
         //Getting Student OBJ
         Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
 
-
-        System.out.println(student.getPid());
-
         /**
          *  TESTING VALIDATE STUDENT
          */
@@ -53,18 +48,9 @@ public class Main {
 //        System.out.println(val.studentMeetsRequirements());
 
         if(val.studentMeetsRequirements()){
-
+            studentsList.add(student);
+            System.out.println(studentsList);
         }else System.out.println("Sorry Try again!");
-
-
-
-        studentsList.add(student);
-
-        System.out.println(studentsList);
-
-
-
-
 
 
     }
