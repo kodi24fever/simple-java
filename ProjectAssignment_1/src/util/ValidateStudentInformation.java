@@ -11,6 +11,33 @@ public class ValidateStudentInformation {
     private boolean pidBol;
     private boolean gradeBol;
 
+    /**
+     *  Checks if firstName meets the requirements
+     *
+     * 1.String.matches("[a-zA-Z]+") to check it it has alphabet characters
+     * 2.Character.isUpperCase(name.charAt(0)) to check if first character is upper case
+     * 3."ABC".isBlank() ); ===> false  to check if it has white spaces or empty string
+     */
+    public void validateFirstName(){
+        if(this.firstName.matches("[a-zA-Z]+") && Character.isUpperCase(this.firstName.charAt(0)) && !this.firstName.isBlank()){
+            FNBol = true;
+        }else FNBol = false;
+    }
+
+    /**
+     *  Checks if lastName meets the requirements
+     *
+     * 1.String.matches("[a-zA-Z]+") to check it it has alphabet characters
+     * 2.Character.isUpperCase(name.charAt(0)) to check if first character is upper case
+     * 3."ABC".isBlank() ); ===> false  to check if it has white spaces or empty string
+     * 4.String.contains(".") to check if contains a dot
+     */
+    public void validateLastName() {
+        if(this.lastName.matches("[a-zA-Z]+") && Character.isUpperCase(this.lastName.charAt(0)) && !this.lastName.isBlank() && this.lastName.contains(".")){
+            LNBol = true;
+        }else LNBol = false;
+    }
+
 
     // Checks for pid if is 7 digits number and does not start with 0
     public void validatePID(){

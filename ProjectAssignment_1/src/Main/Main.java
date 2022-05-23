@@ -16,6 +16,14 @@ public class Main {
 
 
 
+
+
+        String name = "Frank";
+
+        System.out.println(Character.isUpperCase(name.charAt(0)));
+
+
+
         // This message should show when student list is empty
 //        System.out.println("Welcome to my grade book!");
 //        System.out.println("Please enter the information of the first student using the following format:");
@@ -35,15 +43,6 @@ public class Main {
 
         //Getting Student OBJ
         Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
-
-
-
-        //Check Score int not negative not greater than 100
-        if(grade >= 0 && grade <= 100){
-            grade = Integer.parseInt(splited[3]);
-        }
-
-
 
 
         System.out.println(student.getPid());
