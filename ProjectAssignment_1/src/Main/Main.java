@@ -6,15 +6,31 @@ import java.util.Scanner; // Import java.util.Scanner for getting user input
 import java.util.ArrayList; // Import arrrayList to create studnets
 
 public class Main {
-    public static void main(String[] args) {
-        // ArrayList of students
-        ArrayList<Student> studentsList = new ArrayList<Student>();
+    // ArrayList of students
+    private static ArrayList<Student> studentsList = new ArrayList<Student>();
 
-        // Array to split user input in long string format
-        String splited[];
-
+    private static void addUser(){
         // Scanner for user input
         Scanner myObj = new Scanner(System.in); // Scanner for user input
+        String splited[];
+        String wholeStudent = myObj.nextLine();
+        // Splits whole input string into separate strings in an array
+        splited = wholeStudent.split(" ");
+
+        //Getting Student OBJ
+        Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
+
+        /**
+         *  Validate student information
+         */
+        ValidateStudentInformation val = new ValidateStudentInformation(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
+
+        if(val.studentMeetsRequirements()){
+            studentsList.add(student);
+            System.out.println(studentsList);
+        }else System.out.println("Sorry Try again!");
+    }
+    public static void main(String[] args) {
 
         // While loop when lists is empty
         while(studentsList.size() < 1){
@@ -27,22 +43,7 @@ public class Main {
             System.out.println("\"firstName lastName PID grade\"");
             System.out.println("Press Enter when you are done");
 
-            String wholeStudent = myObj.nextLine();
-            // Splits whole input string into separate strings in an array
-            splited = wholeStudent.split(" ");
-
-            //Getting Student OBJ
-            Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
-
-            /**
-             *  Validate student information
-             */
-            ValidateStudentInformation val = new ValidateStudentInformation(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
-
-            if(val.studentMeetsRequirements()){
-                studentsList.add(student);
-                System.out.println(studentsList);
-            }else System.out.println("Sorry Try again!");
+            addUser();
         }
 
         while(studentsList.size() >= 1){
@@ -52,6 +53,12 @@ public class Main {
             System.out.println("Please enter the information of the next student in the same format.");
             System.out.println("if there is no more students, please enter the keyword \"DONE\"");
             System.out.println("Press Enter when you are done");
+
+            // Array to split user input in long string format
+            String splited[];
+
+            // Scanner for user input
+            Scanner myObj = new Scanner(System.in); // Scanner for user input
 
             String wholeStudent = myObj.nextLine();
 
@@ -74,21 +81,9 @@ public class Main {
                 }else System.out.println("Sorry Try again!");
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
+
+
+
 
 }
