@@ -45,22 +45,49 @@ public class Main {
             }else System.out.println("Sorry Try again!");
         }
 
+        while(studentsList.size() >= 1){
+            /**
+             *  Repeated info to keep adding students
+             */
+            System.out.println("Please enter the information of the next student in the same format.");
+            System.out.println("if there is no more students, please enter the keyword \"DONE\"");
+            System.out.println("Press Enter when you are done");
+
+            String wholeStudent = myObj.nextLine();
+
+            if(wholeStudent.toLowerCase().matches("done")){
+                break;
+            }else {
+                splited = wholeStudent.split(" ");
+
+                //Getting Student OBJ
+                Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
+
+                /**
+                 *  Validate student information
+                 */
+                ValidateStudentInformation val = new ValidateStudentInformation(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
+
+                if(val.studentMeetsRequirements()){
+                    studentsList.add(student);
+                    System.out.println(studentsList);
+                }else System.out.println("Sorry Try again!");
+            }
+        }
 
 
 
 
 
 
-//        if(wholeStudent.toLowerCase().matches("done")){
-//        }
 
 
 
 
 
-        System.out.println("Please enter the information of the next student in the same format.");
-        System.out.println("if there is no more students, please enter the keyword \"DONE\"");
-        System.out.println("Press Enter when you are done");
+
+
+
 
     }
 
