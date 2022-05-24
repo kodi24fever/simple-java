@@ -9,7 +9,7 @@ public class Main {
     // ArrayList of students
     private static ArrayList<Student> studentsList = new ArrayList<Student>();
 
-    private static void addUser(String wholeStudent){
+    private static void addStudent(String wholeStudent){
         String splited[];
         // Splits whole input string into separate strings in an array
         splited = wholeStudent.split(" ");
@@ -46,7 +46,7 @@ public class Main {
             // String to get user input
             String wholeStudent = myObj.nextLine();
 
-            addUser(wholeStudent);
+            addStudent(wholeStudent);
         }
 
         while(studentsList.size() >= 1){
@@ -62,7 +62,7 @@ public class Main {
 
             if(wholeStudent.toLowerCase().matches("done")){
                 break;
-            }else addUser(wholeStudent);
+            }else addStudent(wholeStudent);
 
         }
     }
