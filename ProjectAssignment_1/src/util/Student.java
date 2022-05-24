@@ -29,7 +29,6 @@ public class Student {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pid = pid;
-
         this.grade = new Grade(grade);
 
         System.out.println(this.grade.getLetterGrade());

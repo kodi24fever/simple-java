@@ -27,4 +27,9 @@ public class Gradebook {
 	for(Student s: listOfStudents)
 	    System.out.printf("%s\t%s\t%d\t%d\n", s.getFirstName(), s.getLastName(), s.getPid(), s.getGrade().getScore());
     }
+
+	// COnstructor
+	public Gradebook(){
+
+	}
 }

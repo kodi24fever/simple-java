@@ -12,7 +12,7 @@ public class Grade {
         if(score >= 90){
             letterGrade = "A";
         }
-        else if(score >= 85){
+        else if(score >= 86){
             letterGrade = "-A";
         }
         else if(score >= 80){
@@ -20,10 +20,8 @@ public class Grade {
         }
         else letterGrade = "F";
 
-
         return letterGrade;
     }
-
 
     //Constructor
     public Grade(int score) {

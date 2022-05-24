@@ -1,14 +1,14 @@
-package Main;
+package main;
 import util.*;
 
-import java.util.Locale;
 import java.util.Scanner; // Import java.util.Scanner for getting user input
 import java.util.ArrayList; // Import arrrayList to create studnets
 
 public class Main {
-    // ArrayList of students
+    // ArrayList of students but I should use gradebook class to add students to gradebook class
     private static ArrayList<Student> studentsList = new ArrayList<Student>();
 
+    // Method to check student information and add it to arraylist
     private static void addStudent(String wholeStudent){
         String splited[];
         // Splits whole input string into separate strings in an array
@@ -17,18 +17,19 @@ public class Main {
         //Getting Student OBJ
         Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
 
-        /**
-         *  Validate student information
-         */
+        //Validate student information
         ValidateStudentInformation val = new ValidateStudentInformation(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
 
         if(val.studentMeetsRequirements()){
             studentsList.add(student);
             System.out.println(studentsList);
-        }else System.out.println("Sorry Try again!");
+        }else System.out.println("Sorry, the information provided is not correct.\n Try again!\n");
     }
-    public static void main(String[] args) {
 
+    /**
+     * MAIN: Where all starts!!
+     */
+    public static void main(String[] args) {
         // Scanner for user input
         Scanner myObj = new Scanner(System.in); // Scanner for user input
 
@@ -45,8 +46,14 @@ public class Main {
 
             // String to get user input
             String wholeStudent = myObj.nextLine();
+            String splited[];
+            // Splits whole input string into separate strings in an array
+            splited = wholeStudent.split(" ");
 
-            addStudent(wholeStudent);
+            if(splited.length != 4){
+                System.out.println("Student information is not complete or accurate");
+                continue;
+            } else addStudent(wholeStudent);
         }
 
         while(studentsList.size() >= 1){
@@ -59,10 +66,16 @@ public class Main {
 
             // String to get user input
             String wholeStudent = myObj.nextLine();
+            String splited[];
+            // Splits whole input string into separate strings in an array
+            splited = wholeStudent.split(" ");
 
             if(wholeStudent.toLowerCase().matches("done")){
                 break;
-            }else addStudent(wholeStudent);
+            }else if(splited.length != 4){
+                System.out.println("Student information is not complete or accurate");
+                continue;
+            } else addStudent(wholeStudent);
 
         }
     }
