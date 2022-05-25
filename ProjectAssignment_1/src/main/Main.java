@@ -37,8 +37,8 @@ public class Main {
         while(studentsList.size() < 1){
             /**
              *  Welcome message for user
+             *  This message should show when student list is empty
              */
-            // This message should show when student list is empty
             System.out.println("Welcome to my grade book!");
             System.out.println("Please enter the information of the first student using the following format:");
             System.out.println("\"firstName lastName PID grade\"");

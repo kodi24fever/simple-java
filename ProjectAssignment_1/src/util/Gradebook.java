@@ -6,6 +6,10 @@ import java.util.*;
 
 public class Gradebook {
     private ArrayList<Student> listOfStudents;
+
+	public void setListOfStudents(){
+
+	}
     public double calculateAvg() {
 	double sum = 0;
 	for(Student s: listOfStudents)
@@ -30,6 +34,8 @@ public class Gradebook {
 
 	// COnstructor
 	public Gradebook(){
-
+		/**
+		 *  Here I should be able to add students to arrayList using student class
+		 */
 	}
 }
