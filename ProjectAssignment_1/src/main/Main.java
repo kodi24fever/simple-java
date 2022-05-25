@@ -120,6 +120,9 @@ public class Main {
             if(wholeStudent.toLowerCase().matches("max score")){
                 System.out.println("The max score of all students is: " + gradebook.findMaxScore());
             }
+            if(wholeStudent.toLowerCase().matches("max letter")){
+                System.out.println("The max letter of all students is: " + gradebook.findMaxLetter());
+            }
         }
 
 

@@ -48,6 +48,18 @@ public class Gradebook {
 		return scores.get(scores.size()-1);
 	}
 
+	// Finds max letter
+	public String findMaxLetter(){
+		ArrayList<String> letters = new ArrayList<String>();
+		for(Student s: listOfStudents){
+			letters.add(s.getGrade().getLetterGrade());
+		}
+
+		Collections.sort(letters);
+
+		return letters.get(letters.size()-1);
+	}
+
 
 
 	public void setListOfStudents(){
