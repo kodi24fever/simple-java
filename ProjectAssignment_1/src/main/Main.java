@@ -17,13 +17,14 @@ public class Main {
         Gradebook gradebook = new Gradebook();
 
 
+        /**
+         *  Welcome message for user
+         *  This message should show when student list is empty
+         */
+        System.out.println("Welcome to my grade book!");
         // While loop when list is empty
         while(gradebook.getListOfStudents().size() < 1){
-            /**
-             *  Welcome message for user
-             *  This message should show when student list is empty
-             */
-            System.out.println("Welcome to my grade book!");
+
             System.out.println("Please enter the information of the first student using the following format:");
             System.out.println("\"firstName lastName PID grade\"");
             System.out.println("Press Enter when you are done");
@@ -37,7 +38,7 @@ public class Main {
             if(wholeStudent.toLowerCase().matches("done")) {
                 break;
             }else if(splited.length != 4){
-                System.out.println("Student information is not complete or accurate");
+                System.out.println("Student information is not complete or accurate.");
                 continue;
             } else {
                 //Getting Student OBJ
@@ -49,7 +50,12 @@ public class Main {
                 if(val.studentMeetsRequirements()){
                     gradebook.addStudent(student);
                     System.out.println(gradebook.getListOfStudents());
-                }else System.out.println("Sorry, the information provided is not correct.\n Try again!\n");
+                }else {
+                    if(!val.showFN()){System.out.println("Name is wrong! Try Again.");}
+                    if(!val.showLN()){System.out.println("Last Name is wrong! Try Again.");}
+                    if(!val.showPIDBol()){System.out.println("PID is wrong! Try Again.");}
+                    if(!val.showGrade()){System.out.println("Grade is wrong! Try Again.");}
+                }
             }
         }
 
@@ -72,7 +78,7 @@ public class Main {
             if(wholeStudent.toLowerCase().matches("done")){
                 break;
             }else if(splited.length != 4){
-                System.out.println("Student information is not complete or accurate");
+                System.out.println("Student information is not complete or accurate.");
                 continue;
             } else {
                 //Getting Student OBJ
@@ -84,7 +90,12 @@ public class Main {
                 if(val.studentMeetsRequirements()){
                     gradebook.addStudent(student);
                     System.out.println(gradebook.getListOfStudents());
-                }else System.out.println("Sorry, the information provided is not correct.\n Try again!\n");
+                }else {
+                    if(!val.showFN()){System.out.println("Name is wrong! Try Again.");}
+                    if(!val.showLN()){System.out.println("Last Name is wrong! Try Again.");}
+                    if(!val.showPIDBol()){System.out.println("PID is wrong! Try Again.");}
+                    if(!val.showGrade()){System.out.println("Grade is wrong! Try Again.");}
+                }
             }
 
         }

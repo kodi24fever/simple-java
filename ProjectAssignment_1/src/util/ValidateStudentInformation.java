@@ -12,6 +12,7 @@ public class ValidateStudentInformation {
     private boolean pidBol;
     private boolean gradeBol;
 
+
     /**
      *  Checks if firstName meets the requirements
      *
@@ -64,21 +65,21 @@ public class ValidateStudentInformation {
         }else return false;
     }
 
-//    Validate Show for testing purposes only
-//    public boolean showFN(){
-//        return FNBol;
-//    }
-//    public boolean showLN(){
-//            return LNBol;
-//        }
-//    public boolean showGrade(){
-//        return gradeBol;
-//    }
-//    public boolean showPIDBol(){
-//        return pidBol;
-//    }
+    // Validate Show for testing purposes only
+    public boolean showFN(){
+        return FNBol;
+    }
+    public boolean showLN(){
+            return LNBol;
+        }
+    public boolean showGrade(){
+        return gradeBol;
+    }
+    public boolean showPIDBol(){
+        return pidBol;
+    }
 
-    // Constructor for student information validation
+     // Constructor for student information validation
     public ValidateStudentInformation(String firstName, String lastName, int pid, int grade){
         this.firstName = firstName;
         this.lastName = lastName;
