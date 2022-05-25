@@ -31,6 +31,6 @@ public class Student {
         this.pid = pid;
         this.grade = new Grade(grade);
 
-        System.out.println(this.grade.getLetterGrade());
+        //System.out.println(this.grade.getLetterGrade());
     }
 }

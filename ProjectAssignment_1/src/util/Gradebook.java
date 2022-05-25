@@ -5,7 +5,12 @@ package util;
 import java.util.*;
 
 public class Gradebook {
-    private ArrayList<Student> listOfStudents;
+    private ArrayList<Student> listOfStudents = new ArrayList<>();
+
+	// Get List
+	public ArrayList<Student> getListOfStudents(){
+		return listOfStudents;
+	}
 
 	public void setListOfStudents(){
 
@@ -32,7 +37,12 @@ public class Gradebook {
 	    System.out.printf("%s\t%s\t%d\t%d\n", s.getFirstName(), s.getLastName(), s.getPid(), s.getGrade().getScore());
     }
 
-	// COnstructor
+
+	public void addStudent(Student student){
+		listOfStudents.add(student);
+	}
+
+	// Constructor
 	public Gradebook(){
 		/**
 		 *  Here I should be able to add students to arrayList using student class
