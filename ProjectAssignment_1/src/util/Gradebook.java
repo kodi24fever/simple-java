@@ -12,7 +12,7 @@ public class Gradebook {
 		return listOfStudents;
 	}
 
-	// Calculate min score
+	// Finds min score
 	public int findMinScore(){
 		ArrayList<Integer> scores = new ArrayList<Integer>();
 		for(Student s: listOfStudents){
@@ -24,6 +24,7 @@ public class Gradebook {
 		return scores.get(0);
 	}
 
+	// Finds min letter
 	public String findMinLetter(){
 		ArrayList<String> letters = new ArrayList<String>();
 		for(Student s: listOfStudents){
@@ -35,6 +36,17 @@ public class Gradebook {
 		return letters.get(0);
 	}
 
+	// Finds max score
+	public int findMaxScore(){
+		ArrayList<Integer> scores = new ArrayList<Integer>();
+		for(Student s: listOfStudents){
+			scores.add(s.getGrade().getScore());
+		}
+
+		Collections.sort(scores);
+
+		return scores.get(scores.size()-1);
+	}
 
 
 

@@ -117,6 +117,9 @@ public class Main {
             if(wholeStudent.toLowerCase().matches("min letter")){
                 System.out.println("The min letter of all students is: " + gradebook.findMinLetter());
             }
+            if(wholeStudent.toLowerCase().matches("max score")){
+                System.out.println("The max score of all students is: " + gradebook.findMaxScore());
+            }
         }
 
 
