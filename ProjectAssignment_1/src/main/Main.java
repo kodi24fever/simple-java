@@ -16,88 +16,93 @@ public class Main {
         // Getting GradeBook obj
         Gradebook gradebook = new Gradebook();
 
-
         /**
          *  Welcome message for user
          *  This message should show when student list is empty
          */
         System.out.println("Welcome to my grade book!");
+
+        
         // While loop when list is empty
-        while(gradebook.getListOfStudents().size() < 1){
+        while(true){
+            if(gradebook.getListOfStudents().size() < 1) {
+                System.out.println("Please enter the information of the first student using the following format:");
+                System.out.println("\"firstName lastName PID grade\"");
+                System.out.println("Press Enter when you are done");
 
-            System.out.println("Please enter the information of the first student using the following format:");
-            System.out.println("\"firstName lastName PID grade\"");
-            System.out.println("Press Enter when you are done");
+                // String to get user input
+                String wholeStudent = s.nextLine();
 
-            // String to get user input
-            String wholeStudent = s.nextLine();
+                // Splits whole input string into separate strings in an array
+                splited = wholeStudent.split(" ");
 
-            // Splits whole input string into separate strings in an array
-            splited = wholeStudent.split(" ");
+                if(wholeStudent.toLowerCase().matches("done")) {
+                    break;
+                }else if(splited.length != 4){
+                    System.out.println("Student information is not complete or accurate.");
+                    continue;
+                } else {
+                    //Getting Student OBJ
+                    Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
 
-            if(wholeStudent.toLowerCase().matches("done")) {
-                break;
-            }else if(splited.length != 4){
-                System.out.println("Student information is not complete or accurate.");
-                continue;
-            } else {
-                //Getting Student OBJ
-                Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
+                    //Validate student information
+                    ValidateStudentInformation val = new ValidateStudentInformation(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
 
-                //Validate student information
-                ValidateStudentInformation val = new ValidateStudentInformation(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
+                    if(val.studentMeetsRequirements()){
+                        gradebook.addStudent(student);
+                        gradebook.printAllStudents();
+                        gradebook.calculateMinScore();
+                    }else {
+                        if(!val.showFN()){System.out.println("Name is wrong! Try Again.");}
+                        if(!val.showLN()){System.out.println("Last Name is wrong! Try Again.");}
+                        if(!val.showPIDBol()){System.out.println("PID is wrong! Try Again.");}
+                        if(!val.showGrade()){System.out.println("Grade is wrong! Try Again.");}
+                    }
+                }
 
-                if(val.studentMeetsRequirements()){
-                    gradebook.addStudent(student);
-                    gradebook.printAllStudents();
-                }else {
-                    if(!val.showFN()){System.out.println("Name is wrong! Try Again.");}
-                    if(!val.showLN()){System.out.println("Last Name is wrong! Try Again.");}
-                    if(!val.showPIDBol()){System.out.println("PID is wrong! Try Again.");}
-                    if(!val.showGrade()){System.out.println("Grade is wrong! Try Again.");}
+            }
+            if(gradebook.getListOfStudents().size() >= 1){
+                /**
+                 *  Repeated info to keep adding students
+                 */
+                System.out.println("Please enter the information of the next student in the same format.");
+                System.out.println("if there is no more students, please enter the keyword \"DONE\"");
+                System.out.println("Press Enter when you are done");
+
+                //String to get user input
+                String wholeStudent = s.nextLine();
+                //Splits whole input string into separate strings in an array
+                splited = wholeStudent.split(" ");
+
+                // Splits whole input string into separate strings in an array
+                splited = wholeStudent.split(" ");
+
+                if(wholeStudent.toLowerCase().matches("done")){
+                    break;
+                }else if(splited.length != 4){
+                    System.out.println("Student information is not complete or accurate.");
+                    continue;
+                } else {
+                    //Getting Student OBJ
+                    Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
+
+                    //Validate student information
+                    ValidateStudentInformation val = new ValidateStudentInformation(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
+
+                    if(val.studentMeetsRequirements()){
+                        gradebook.addStudent(student);
+                        gradebook.printAllStudents();
+                    }else {
+                        if(!val.showFN()){System.out.println("Name is wrong! Try Again.");}
+                        if(!val.showLN()){System.out.println("Last Name is wrong! Try Again.");}
+                        if(!val.showPIDBol()){System.out.println("PID is wrong! Try Again.");}
+                        if(!val.showGrade()){System.out.println("Grade is wrong! Try Again.");}
+                    }
                 }
             }
         }
 
-        while(gradebook.getListOfStudents().size() >= 1){
-            /**
-             *  Repeated info to keep adding students
-             */
-            System.out.println("Please enter the information of the next student in the same format.");
-            System.out.println("if there is no more students, please enter the keyword \"DONE\"");
-            System.out.println("Press Enter when you are done");
 
-            // String to get user input
-            String wholeStudent = s.nextLine();
-            // Splits whole input string into separate strings in an array
-            splited = wholeStudent.split(" ");
-
-            // Splits whole input string into separate strings in an array
-            splited = wholeStudent.split(" ");
-
-            if(wholeStudent.toLowerCase().matches("done")){
-                break;
-            }else if(splited.length != 4){
-                System.out.println("Student information is not complete or accurate.");
-                continue;
-            } else {
-                //Getting Student OBJ
-                Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
-
-                //Validate student information
-                ValidateStudentInformation val = new ValidateStudentInformation(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
-
-                if(val.studentMeetsRequirements()){
-                    gradebook.addStudent(student);
-                    gradebook.printAllStudents();
-                }else {
-                    if(!val.showFN()){System.out.println("Name is wrong! Try Again.");}
-                    if(!val.showLN()){System.out.println("Last Name is wrong! Try Again.");}
-                    if(!val.showPIDBol()){System.out.println("PID is wrong! Try Again.");}
-                    if(!val.showGrade()){System.out.println("Grade is wrong! Try Again.");}
-                }
-            }
-
-        }
+        gradebook.calculateMinScore();
     }
 }

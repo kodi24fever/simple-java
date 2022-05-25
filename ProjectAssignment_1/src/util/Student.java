@@ -21,7 +21,7 @@ public class Student {
 
     // Returns student information in String format
     public String toString() {
-        return this.firstName + " " + this.lastName + " " + this.pid + " " + this.grade.getLetterGrade();
+        return this.firstName + " " + this.lastName + " " + this.pid + " " + this.grade.getSore();
     }
 
     // Constructor for Student

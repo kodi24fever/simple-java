@@ -12,6 +12,16 @@ public class Gradebook {
 		return listOfStudents;
 	}
 
+	// Calculate min score
+	public void calculateMinScore(){
+		for(Student s: listOfStudents){
+			System.out.println(s);
+		}
+	}
+
+
+
+
 	public void setListOfStudents(){
 
 	}
