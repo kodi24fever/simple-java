@@ -56,16 +56,14 @@ public class ValidateStudentInformation {
         }else gradeBol = false;
     }
 
-    /**
-     * Checks for all boolean to be true to create Student object
-     */
+    //Checks for all boolean to be true to create Student object
     public boolean studentMeetsRequirements(){
         if(FNBol && LNBol && pidBol && gradeBol){
             return true;
         }else return false;
     }
 
-    // Validate Show for testing purposes only
+    // Validate Show boolean for error handling for each student information
     public boolean showFN(){
         return FNBol;
     }

@@ -49,7 +49,7 @@ public class Main {
 
                 if(val.studentMeetsRequirements()){
                     gradebook.addStudent(student);
-                    System.out.println(gradebook.getListOfStudents());
+                    gradebook.printAllStudents();
                 }else {
                     if(!val.showFN()){System.out.println("Name is wrong! Try Again.");}
                     if(!val.showLN()){System.out.println("Last Name is wrong! Try Again.");}
@@ -89,7 +89,7 @@ public class Main {
 
                 if(val.studentMeetsRequirements()){
                     gradebook.addStudent(student);
-                    System.out.println(gradebook.getListOfStudents());
+                    gradebook.printAllStudents();
                 }else {
                     if(!val.showFN()){System.out.println("Name is wrong! Try Again.");}
                     if(!val.showLN()){System.out.println("Last Name is wrong! Try Again.");}
