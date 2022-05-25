@@ -60,12 +60,28 @@ public class Gradebook {
 		return letters.get(0);
 	}
 
+	//Find letter Grade
+	public String findLetterGrade(int pid){
+		String letterGrade = "";
+		boolean foundLetter = false;
+
+		for(Student s: listOfStudents){
+			if(s.getPid() == pid){
+				letterGrade = s.getGrade().getLetterGrade();
+				foundLetter = true;
+			}
+		}
+
+		if(foundLetter){
+			return "The letter grade of student is: " + letterGrade;
+		}else return "Could not found letter grade of student with pid: " + pid;
+	}
+
 	//Find name
 	public String findName(int pid){
 		String firstName = "";
 		String lastName = "";
 		boolean foundStudent = false;
-		String error;
 
 		for(Student s: listOfStudents){
 			if(s.getPid() == pid){
@@ -76,9 +92,8 @@ public class Gradebook {
 		}
 
 		if(foundStudent){
-			return firstName + " " + lastName;
+			return "The full name of the student is: " + firstName + " " + lastName;
 		}else return "Could not found student with pid: " + pid;
-
 	}
 
 

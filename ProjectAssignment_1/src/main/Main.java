@@ -123,8 +123,11 @@ public class Main {
             if(wholeStudent.toLowerCase().matches("max letter")){
                 System.out.println("The max letter of all students is: " + gradebook.findMaxLetter());
             }
+            if(splited[0].matches("letter")){
+                System.out.println(gradebook.findLetterGrade(Integer.parseInt(splited[1])));
+            }
             if(splited[0].matches("name")){
-                System.out.println("The  full name of the students is: " + gradebook.findName(Integer.parseInt(splited[1])));
+                System.out.println(gradebook.findName(Integer.parseInt(splited[1])));
             }
         }
 
