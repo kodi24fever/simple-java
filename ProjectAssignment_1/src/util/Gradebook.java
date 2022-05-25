@@ -61,6 +61,25 @@ public class Gradebook {
 	}
 
 	//Find name
+	public String findName(int pid){
+		String firstName = "";
+		String lastName = "";
+		boolean foundStudent = false;
+		String error;
+
+		for(Student s: listOfStudents){
+			if(s.getPid() == pid){
+				firstName = s.getFirstName();
+				lastName = s.getLastName();
+				foundStudent = true;
+			}
+		}
+
+		if(foundStudent){
+			return firstName + " " + lastName;
+		}else return "Could not found student with pid: " + pid;
+
+	}
 
 
 
