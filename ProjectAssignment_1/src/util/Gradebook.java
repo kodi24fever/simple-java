@@ -13,10 +13,26 @@ public class Gradebook {
 	}
 
 	// Calculate min score
-	public void calculateMinScore(){
+	public int findMinScore(){
+		ArrayList<Integer> scores = new ArrayList<Integer>();
 		for(Student s: listOfStudents){
-			System.out.println(s);
+			scores.add(s.getGrade().getScore());
 		}
+
+		Collections.sort(scores);
+
+		return scores.get(0);
+	}
+
+	public String findMinLetter(){
+		ArrayList<String> letters = new ArrayList<String>();
+		for(Student s: listOfStudents){
+			letters.add(s.getGrade().getLetterGrade());
+		}
+
+		Collections.sort(letters);
+
+		return letters.get(0);
 	}
 
 

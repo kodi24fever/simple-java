@@ -22,8 +22,8 @@ public class Main {
          */
         System.out.println("Welcome to my grade book!");
 
-        
-        // While loop when list is empty
+
+        // While loop for adding students to arrayList
         while(true){
             if(gradebook.getListOfStudents().size() < 1) {
                 System.out.println("Please enter the information of the first student using the following format:");
@@ -51,7 +51,6 @@ public class Main {
                     if(val.studentMeetsRequirements()){
                         gradebook.addStudent(student);
                         gradebook.printAllStudents();
-                        gradebook.calculateMinScore();
                     }else {
                         if(!val.showFN()){System.out.println("Name is wrong! Try Again.");}
                         if(!val.showLN()){System.out.println("Last Name is wrong! Try Again.");}
@@ -102,7 +101,25 @@ public class Main {
             }
         }
 
+        // While loop for enetring commands
+        while(true){
+            System.out.println("Please enter any command for list");
+            // String to get user input
+            String wholeStudent = s.nextLine();
 
-        gradebook.calculateMinScore();
+            // Splits whole input string into separate strings in an array
+            splited = wholeStudent.split(" ");
+
+            if(wholeStudent.toLowerCase().matches("quit")){break;}
+            if(wholeStudent.toLowerCase().matches("min score")){
+                System.out.println("The min score of all students is: " + gradebook.findMinScore());
+            }
+            if(wholeStudent.toLowerCase().matches("min letter")){
+                System.out.println("The min letter of all students is: " + gradebook.findMinLetter());
+            }
+        }
+
+
+
     }
 }
