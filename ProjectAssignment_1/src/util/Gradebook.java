@@ -24,18 +24,6 @@ public class Gradebook {
 		return scores.get(0);
 	}
 
-	// Finds min letter
-	public String findMinLetter(){
-		ArrayList<String> letters = new ArrayList<String>();
-		for(Student s: listOfStudents){
-			letters.add(s.getGrade().getLetterGrade());
-		}
-
-		Collections.sort(letters);
-
-		return letters.get(0);
-	}
-
 	// Finds max score
 	public int findMaxScore(){
 		ArrayList<Integer> scores = new ArrayList<Integer>();
@@ -48,8 +36,8 @@ public class Gradebook {
 		return scores.get(scores.size()-1);
 	}
 
-	// Finds max letter
-	public String findMaxLetter(){
+	// Finds min letter
+	public String findMinLetter(){
 		ArrayList<String> letters = new ArrayList<String>();
 		for(Student s: listOfStudents){
 			letters.add(s.getGrade().getLetterGrade());
@@ -59,6 +47,20 @@ public class Gradebook {
 
 		return letters.get(letters.size()-1);
 	}
+
+	// Finds max letter
+	public String findMaxLetter(){
+		ArrayList<String> letters = new ArrayList<String>();
+		for(Student s: listOfStudents){
+			letters.add(s.getGrade().getLetterGrade());
+		}
+
+		Collections.sort(letters);
+
+		return letters.get(0);
+	}
+
+	//Find name
 
 
 
