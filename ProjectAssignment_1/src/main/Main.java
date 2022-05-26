@@ -50,7 +50,6 @@ public class Main {
 
                     if(val.studentMeetsRequirements()){
                         gradebook.addStudent(student);
-                        gradebook.printAllStudents();
                     }else {
                         if(!val.showFN()){System.out.println("Name is wrong! Try Again.");}
                         if(!val.showLN()){System.out.println("Last Name is wrong! Try Again.");}
@@ -90,7 +89,6 @@ public class Main {
 
                     if(val.studentMeetsRequirements()){
                         gradebook.addStudent(student);
-                        gradebook.printAllStudents();
                     }else {
                         if(!val.showFN()){System.out.println("Name is wrong! Try Again.");}
                         if(!val.showLN()){System.out.println("Last Name is wrong! Try Again.");}
@@ -132,6 +130,29 @@ public class Main {
             if(splited[0].matches("change")){
                 System.out.println(gradebook.changeGrade(Integer.parseInt(splited[1]), Integer.parseInt(splited[2])));
             }
+
+            /**
+             *  Starts averages calculations
+             */
+
+            if(splited[0].matches("average score")){
+                System.out.println("Average score is: " + String.valueOf(gradebook.calculateAvg()));
+            }
+//            if(splited[0].matches("average letter")){
+//                System.out.println("Average letter is: " + gradebook.calculateAvgLetter());
+//            }
+//            if(splited[0].matches("median score")){
+//                System.out.println("Median score is: " + gradebook.calculateAvg());
+//            }
+//            if(splited[0].matches("median letter")){
+//                System.out.println("Median letter is: " + gradebook.calculateAvg());
+//            }
+//            if(splited[0].matches("tab scores")){
+//                System.out.println("Tab scores format for students:\n " + gradebook.calculateAvg());
+//            }
+//            if(splited[0].matches("tab scores")){
+//                System.out.println("Tab scores format for students with letter grades:\n " + gradebook.calculateAvg());
+//            }
         }
 
         System.out.println(gradebook.getListOfStudents());

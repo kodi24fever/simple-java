@@ -7,7 +7,6 @@ import java.util.*;
 public class Gradebook {
     private ArrayList<Student> listOfStudents = new ArrayList<>();
 
-
 	// Get List
 	public ArrayList<Student> getListOfStudents(){
 		return listOfStudents;
@@ -115,13 +114,31 @@ public class Gradebook {
 		}else return "Could not change grade student pid: " + pid + " does not exist!";
 	}
 
+	/**
+	 * Starts average and media  calculations
+	 */
 
+	// Calculate average score
     public double calculateAvg() {
 	double sum = 0;
-	for(Student s: listOfStudents)
+	double avg = 0;
+	for(Student s: listOfStudents){
 	    sum += s.getGrade().getScore();
-	return sum / listOfStudents.size();
+	}
+	avg = sum/ listOfStudents.size();
+
+	System.out.println(avg);
+	return avg;
     }
+
+	// Calculate average letter
+//	public String calculateAvgLetter(){
+//		Grade grade = new Grade(calculateAvg());
+//		return grade.getLetterGrade();
+//	}
+
+
+
     public float calculateMedian() {
 	int i = 0, n = listOfStudents.size();
 	int[] scores = new int[n];
@@ -138,7 +155,7 @@ public class Gradebook {
 	    System.out.printf("%s\t%s\t%d\t%d\n", s.getFirstName(), s.getLastName(), s.getPid(), s.getGrade().getScore());
     }
 
-
+	// Adds student to arrayList in gradebook
 	public void addStudent(Student student){
 		listOfStudents.add(student);
 	}

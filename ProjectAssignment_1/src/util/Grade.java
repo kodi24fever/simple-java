@@ -14,10 +14,6 @@ public class Grade {
         return score;
     }
 
-
-    public int getSore(){
-        return this.score;
-    }
     public String getLetterGrade() {
         if(score >= 90){
             letterGrade = "A";
