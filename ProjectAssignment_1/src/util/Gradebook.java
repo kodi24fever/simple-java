@@ -119,15 +119,13 @@ public class Gradebook {
 	 */
 
 	// Calculate average score
-	public int calculateAvg() {
+	public double calculateAvg() {
 		double sum = 0;
-		double avg = 0;
 		for(Student s: listOfStudents){
 			sum += s.getGrade().getScore();
 		}
-		avg = sum/ listOfStudents.size();
 
-		return (int) avg;
+		return sum/ listOfStudents.size();
 	}
 
 	// Calculate average letter
@@ -136,8 +134,7 @@ public class Gradebook {
 		return grade.getLetterGrade();
 	}
 
-
-
+	// Calculates median score
     public double calculateMedian() {
 	int i = 0, n = listOfStudents.size();
 	double[] scores = new double[n];
@@ -149,6 +146,12 @@ public class Gradebook {
 	else
 	    return scores[n / 2];
     }
+	// Calculate median letter
+	public String calculateMedianLetter(){
+		Grade grade = new Grade(calculateMedian());
+		return grade.getLetterGrade();
+	}
+
     public void printAllStudents() {
 	for(Student s: listOfStudents)
 	    System.out.printf("%s\t%s\t%d\t%d\n", s.getFirstName(), s.getLastName(), s.getPid(), s.getGrade().getScore());

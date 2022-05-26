@@ -136,12 +136,12 @@ public class Main {
             if(wholeStudent.toLowerCase().matches("average letter")){
                 System.out.println("Average letter is: " + gradebook.calculateAvgLetter());
             }
-//            if(wholeStudent.toLowerCase().matches"median score")){
-//                System.out.println("Median score is: " + gradebook.calculateAvg());
-//            }
-//            if(wholeStudent.toLowerCase().matches("median letter")){
-//                System.out.println("Median letter is: " + gradebook.calculateAvg());
-//            }
+            if(wholeStudent.toLowerCase().matches("median score")){
+                System.out.println("Median score is: " + gradebook.calculateMedian());
+            }
+            if(wholeStudent.toLowerCase().matches("median letter")){
+                System.out.println("Median letter is: " + gradebook.calculateMedianLetter());
+            }
 //            if(wholeStudent.toLowerCase().matches("tab scores")){
 //                System.out.println("Tab scores format for students:\n " + gradebook.calculateAvg());
 //            }
