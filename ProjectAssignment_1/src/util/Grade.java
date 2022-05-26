@@ -3,14 +3,14 @@
 package util;
 
 public class Grade {
-    private int score;
+    private double score;
     private String letterGrade;
 
     // Score setter
-    public void setScore(int newScore){ this.score = newScore;}
+    public void setScore(double newScore){ this.score = newScore;}
 
     // Score Getter
-    public int getScore() {
+    public double getScore() {
         return score;
     }
 
@@ -30,7 +30,7 @@ public class Grade {
     }
 
     //Constructor
-    public Grade(int score) {
+    public Grade(double score) {
         this.score = score;
     }
 }

@@ -25,7 +25,7 @@ public class Student {
     }
 
     // Constructor for Student
-    public Student(String firstName, String lastName, int pid, int grade) {
+    public Student(String firstName, String lastName, int pid, double grade) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pid = pid;

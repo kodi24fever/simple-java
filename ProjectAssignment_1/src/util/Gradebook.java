@@ -13,8 +13,8 @@ public class Gradebook {
 	}
 
 	// Finds min score
-	public int findMinScore(){
-		ArrayList<Integer> scores = new ArrayList<Integer>();
+	public double findMinScore(){
+		ArrayList<Double> scores = new ArrayList<Double>();
 		for(Student s: listOfStudents){
 			scores.add(s.getGrade().getScore());
 		}
@@ -25,8 +25,8 @@ public class Gradebook {
 	}
 
 	// Finds max score
-	public int findMaxScore(){
-		ArrayList<Integer> scores = new ArrayList<Integer>();
+	public double findMaxScore(){
+		ArrayList<Double> scores = new ArrayList<Double>();
 		for(Student s: listOfStudents){
 			scores.add(s.getGrade().getScore());
 		}
@@ -96,9 +96,9 @@ public class Gradebook {
 	}
 
 	// Change grade
-	public String changeGrade(int pid, int newGrade){
+	public String changeGrade(int pid, double newGrade){
 		boolean isNewGrade = false;
-		int grade = 0;
+		double grade = 0.0;
 
 
 		for(Student s: listOfStudents){
@@ -138,9 +138,9 @@ public class Gradebook {
 
 
 
-    public float calculateMedian() {
+    public double calculateMedian() {
 	int i = 0, n = listOfStudents.size();
-	int[] scores = new int[n];
+	double[] scores = new double[n];
 	for(Student s: listOfStudents)
 	    scores[i++] = s.getGrade().getScore();
 	Arrays.sort(scores);
