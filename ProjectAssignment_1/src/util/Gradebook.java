@@ -157,6 +157,11 @@ public class Gradebook {
 	    System.out.printf("%s\t%s\t%d\t%d\n", s.getFirstName(), s.getLastName(), s.getPid(), s.getGrade().getScore());
     }
 
+	public void printAllStudentsLetters() {
+		for(Student s: listOfStudents)
+			System.out.printf("%s\t%s\t%d\t%d\n", s.getFirstName(), s.getLastName(), s.getPid(), s.getGrade().getLetterGrade());
+	}
+
 	// Adds student to arrayList in gradebook
 	public void addStudent(Student student){
 		listOfStudents.add(student);
