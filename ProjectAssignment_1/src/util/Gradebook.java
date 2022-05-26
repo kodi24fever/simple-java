@@ -119,23 +119,22 @@ public class Gradebook {
 	 */
 
 	// Calculate average score
-    public double calculateAvg() {
-	double sum = 0;
-	double avg = 0;
-	for(Student s: listOfStudents){
-	    sum += s.getGrade().getScore();
-	}
-	avg = sum/ listOfStudents.size();
+	public int calculateAvg() {
+		double sum = 0;
+		double avg = 0;
+		for(Student s: listOfStudents){
+			sum += s.getGrade().getScore();
+		}
+		avg = sum/ listOfStudents.size();
 
-	System.out.println(avg);
-	return avg;
-    }
+		return (int) avg;
+	}
 
 	// Calculate average letter
-//	public String calculateAvgLetter(){
-//		Grade grade = new Grade(calculateAvg());
-//		return grade.getLetterGrade();
-//	}
+	public String calculateAvgLetter(){
+		Grade grade = new Grade(calculateAvg());
+		return grade.getLetterGrade();
+	}
 
 
 

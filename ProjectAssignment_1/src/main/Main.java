@@ -130,27 +130,22 @@ public class Main {
             if(splited[0].matches("change")){
                 System.out.println(gradebook.changeGrade(Integer.parseInt(splited[1]), Integer.parseInt(splited[2])));
             }
-
-            /**
-             *  Starts averages calculations
-             */
-
-            if(splited[0].matches("average score")){
-                System.out.println("Average score is: " + String.valueOf(gradebook.calculateAvg()));
+            if(wholeStudent.toLowerCase().matches("average score")){
+                System.out.println(gradebook.calculateAvg());
             }
-//            if(splited[0].matches("average letter")){
-//                System.out.println("Average letter is: " + gradebook.calculateAvgLetter());
-//            }
-//            if(splited[0].matches("median score")){
+            if(wholeStudent.toLowerCase().matches("average letter")){
+                System.out.println("Average letter is: " + gradebook.calculateAvgLetter());
+            }
+//            if(wholeStudent.toLowerCase().matches"median score")){
 //                System.out.println("Median score is: " + gradebook.calculateAvg());
 //            }
-//            if(splited[0].matches("median letter")){
+//            if(wholeStudent.toLowerCase().matches("median letter")){
 //                System.out.println("Median letter is: " + gradebook.calculateAvg());
 //            }
-//            if(splited[0].matches("tab scores")){
+//            if(wholeStudent.toLowerCase().matches("tab scores")){
 //                System.out.println("Tab scores format for students:\n " + gradebook.calculateAvg());
 //            }
-//            if(splited[0].matches("tab scores")){
+//            if(wholeStudent.toLowerCase().matches("tab scores")){
 //                System.out.println("Tab scores format for students with letter grades:\n " + gradebook.calculateAvg());
 //            }
         }
