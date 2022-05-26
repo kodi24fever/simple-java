@@ -101,7 +101,7 @@ public class Main {
             }
         }
 
-        // While loop for enetring commands
+        // While loop for entering commands
         while(true){
             System.out.println("Please enter any command for list");
             // String to get user input
@@ -129,8 +129,12 @@ public class Main {
             if(splited[0].matches("name")){
                 System.out.println(gradebook.findName(Integer.parseInt(splited[1])));
             }
+            if(splited[0].matches("change")){
+                System.out.println(gradebook.changeGrade(Integer.parseInt(splited[1]), Integer.parseInt(splited[2])));
+            }
         }
 
+        System.out.println(gradebook.getListOfStudents());
 
 
     }

@@ -5,6 +5,11 @@ package util;
 public class Grade {
     private int score;
     private String letterGrade;
+
+    // Score setter
+    public void setScore(int newScore){ this.score = newScore;}
+
+    // Score Getter
     public int getScore() {
         return score;
     }

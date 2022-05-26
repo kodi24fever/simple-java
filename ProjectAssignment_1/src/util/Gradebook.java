@@ -7,6 +7,7 @@ import java.util.*;
 public class Gradebook {
     private ArrayList<Student> listOfStudents = new ArrayList<>();
 
+
 	// Get List
 	public ArrayList<Student> getListOfStudents(){
 		return listOfStudents;
@@ -90,17 +91,31 @@ public class Gradebook {
 				foundStudent = true;
 			}
 		}
-
 		if(foundStudent){
 			return "The full name of the student is: " + firstName + " " + lastName;
 		}else return "Could not found student with pid: " + pid;
 	}
 
+	// Change grade
+	public String changeGrade(int pid, int newGrade){
+		boolean isNewGrade = false;
+		int grade = 0;
 
 
-	public void setListOfStudents(){
+		for(Student s: listOfStudents){
+			if(s.getPid() == pid){
+				s.getGrade().setScore(newGrade);
+				isNewGrade = true;
+				grade = s.getGrade().getScore();
+			}
+		}
 
+		if(isNewGrade){
+			return "The new grade is: " + grade;
+		}else return "Could not change grade student pid: " + pid + " does not exist!";
 	}
+
+
     public double calculateAvg() {
 	double sum = 0;
 	for(Student s: listOfStudents)
