@@ -152,6 +152,37 @@ public class Gradebook {
 		return grade.getLetterGrade();
 	}
 
+	// Tab Score for students
+	public void showTabScores() {
+		System.out.println("-----------------------------------------------------------------------------");
+		System.out.printf("%10s %20s %10s %10s", "FIRST NAME", "LAST NAME", "PID", "GRADE");
+		System.out.println();
+		System.out.println("-----------------------------------------------------------------------------");
+		for(Student student: listOfStudents){
+			System.out.format("%10s %20s %10s %10s",
+					student.getFirstName(), student.getLastName(), student.getPid(), student.getGrade().getScore());
+			System.out.println();
+		}
+		System.out.println("-----------------------------------------------------------------------------");
+	}
+
+	// Tab letter for students
+	public void showLetterGrades() {
+		System.out.println("-----------------------------------------------------------------------------");
+		System.out.printf("%10s %20s %10s %10s", "FIRST NAME", "LAST NAME", "PID", "LETTER-GRADE");
+		System.out.println();
+		System.out.println("-----------------------------------------------------------------------------");
+		for(Student student: listOfStudents){
+			System.out.format("%10s %20s %10s %10s",
+					student.getFirstName(), student.getLastName(), student.getPid(), student.getGrade().getLetterGrade());
+			System.out.println();
+		}
+		System.out.println("-----------------------------------------------------------------------------");
+	}
+
+
+
+
     public void printAllStudents() {
 	for(Student s: listOfStudents)
 	    System.out.printf("%s\t%s\t%d\t%d\n", s.getFirstName(), s.getLastName(), s.getPid(), s.getGrade().getScore());

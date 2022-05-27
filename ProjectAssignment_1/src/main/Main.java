@@ -143,10 +143,10 @@ public class Main {
                 System.out.println("Median letter is: " + gradebook.calculateMedianLetter());
             }
             if(wholeStudent.toLowerCase().matches("tab scores")){
-               gradebook.printAllStudents();
+               gradebook.showTabScores();
             }
             if(wholeStudent.toLowerCase().matches("tab letters")){
-                gradebook.printAllStudentsLetters();
+                gradebook.showLetterGrades();
             }
         }
 
