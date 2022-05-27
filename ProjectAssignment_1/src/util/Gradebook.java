@@ -100,7 +100,6 @@ public class Gradebook {
 		boolean isNewGrade = false;
 		double grade = 0.0;
 
-
 		for(Student s: listOfStudents){
 			if(s.getPid() == pid){
 				s.getGrade().setScore(newGrade);

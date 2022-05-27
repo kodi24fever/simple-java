@@ -4,7 +4,7 @@ public class ValidateStudentInformation {
     private String firstName;
     private String lastName;
     private int pid;
-    private int grade;
+    private double grade;
 
     // Boolean variables to check if student info meets requirements
     private boolean FNBol;
@@ -78,7 +78,7 @@ public class ValidateStudentInformation {
     }
 
      // Constructor for student information validation
-    public ValidateStudentInformation(String firstName, String lastName, int pid, int grade){
+    public ValidateStudentInformation(String firstName, String lastName, int pid, double grade){
         this.firstName = firstName;
         this.lastName = lastName;
         this.pid = pid;

@@ -9,6 +9,10 @@ public class Main {
 
         // Variable declaration
         String splited[] = {};
+        String firstName = "";
+        String lastName = "";
+        int pid = 0;
+        double grade = 0.0;
 
         // Scanner for user input
         Scanner s = new Scanner(System.in); // Scanner for user input
@@ -43,7 +47,11 @@ public class Main {
                     continue;
                 } else {
                     //Validate student information
-                    ValidateStudentInformation val = new ValidateStudentInformation(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
+                    firstName = splited[0];
+                    lastName = splited[1];
+                    pid = Integer.parseInt(splited[2]);
+                    grade = Double.parseDouble(splited[3]);
+                    ValidateStudentInformation val = new ValidateStudentInformation(firstName, lastName, pid, grade);
 
                     if(val.studentMeetsRequirements()){
                         // Creates new Student obj to be added to gradebook
@@ -81,8 +89,11 @@ public class Main {
                     System.out.println("Student information is not complete or accurate.");
                     continue;
                 } else {
-                    //Validate student information
-                    ValidateStudentInformation val = new ValidateStudentInformation(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
+                    firstName = splited[0];
+                    lastName = splited[1];
+                    pid = Integer.parseInt(splited[2]);
+                    grade = Double.parseDouble(splited[3]);
+                    ValidateStudentInformation val = new ValidateStudentInformation(firstName, lastName, pid, grade);
 
                     if(val.studentMeetsRequirements()){
                         // Creates new Student obj to be added to gradebook
@@ -109,49 +120,52 @@ public class Main {
             splited = wholeStudent.split(" ");
 
             if(wholeStudent.toLowerCase().matches("quit")){break;}
-            if(wholeStudent.toLowerCase().matches("min score")){
+            else if(wholeStudent.toLowerCase().matches("min score")){
                 System.out.println("The min score of all students is: " + gradebook.findMinScore());
             }
-            if(wholeStudent.toLowerCase().matches("min letter")){
+            else if(wholeStudent.toLowerCase().matches("min letter")){
                 System.out.println("The min letter of all students is: " + gradebook.findMinLetter());
             }
-            if(wholeStudent.toLowerCase().matches("max score")){
+            else if(wholeStudent.toLowerCase().matches("max score")){
                 System.out.println("The max score of all students is: " + gradebook.findMaxScore());
             }
-            if(wholeStudent.toLowerCase().matches("max letter")){
-                System.out.println("The max letter of all students is: " + gradebook.findMaxLetter());
+            else if(wholeStudent.toLowerCase().matches("max letter")){
+                gradebook.findMaxLetter();
             }
-            if(splited[0].matches("letter")){
+            if(splited.length == 2 && splited[0].matches("letter")){
                 System.out.println(gradebook.findLetterGrade(Integer.parseInt(splited[1])));
             }
-            if(splited[0].matches("name")){
+            else if(splited.length == 2 && splited[0].matches("name")){
                 System.out.println(gradebook.findName(Integer.parseInt(splited[1])));
             }
-            if(splited[0].matches("change")){
-                System.out.println(gradebook.changeGrade(Integer.parseInt(splited[1]), Integer.parseInt(splited[2])));
+            else if(splited.length == 3 && splited[0].matches("change")){
+                System.out.println(gradebook.changeGrade(Integer.parseInt(splited[1]), Double.parseDouble(splited[2])));
             }
-            if(wholeStudent.toLowerCase().matches("average score")){
+            else if(wholeStudent.toLowerCase().matches("average score")){
                 System.out.println(gradebook.calculateAvg());
             }
-            if(wholeStudent.toLowerCase().matches("average letter")){
+            else if(wholeStudent.toLowerCase().matches("average letter")){
                 System.out.println("Average letter is: " + gradebook.calculateAvgLetter());
             }
-            if(wholeStudent.toLowerCase().matches("median score")){
+            else if(wholeStudent.toLowerCase().matches("median score")){
                 System.out.println("Median score is: " + gradebook.calculateMedian());
             }
-            if(wholeStudent.toLowerCase().matches("median letter")){
+            else if(wholeStudent.toLowerCase().matches("median letter")){
                 System.out.println("Median letter is: " + gradebook.calculateMedianLetter());
             }
-            if(wholeStudent.toLowerCase().matches("tab scores")){
+            else if(wholeStudent.toLowerCase().matches("tab scores")){
                gradebook.showTabScores();
             }
-            if(wholeStudent.toLowerCase().matches("tab letters")){
+            else if(wholeStudent.toLowerCase().matches("tab letters")){
                 gradebook.showLetterGrades();
             }
+            else {System.out.println("Wrong command. Try again!!");}
         }
 
-        System.out.println(gradebook.getListOfStudents());
-
+        /**
+         *  End of programs but still inside main
+         *  Something else could run in here
+         */
 
     }
 }
