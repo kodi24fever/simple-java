@@ -18,11 +18,26 @@ public class Grade {
         if(score >= 90){
             letterGrade = "A";
         }
-        else if(score >= 86){
-            letterGrade = "-A";
+        else if(score >= 86.67){
+            letterGrade = "A-";
         }
-        else if(score >= 80){
+        else if(score >= 83.33){
+            letterGrade = "B+";
+        }
+        else if(score >= 80.00){
             letterGrade = "B";
+        }
+        else if(score >= 76.77){
+            letterGrade = "B-";
+        }
+        else if(score >= 73.33){
+            letterGrade = "C+";
+        }
+        else if(score >= 70.00){
+            letterGrade = "C";
+        }
+        else if(score >= 60.00){
+            letterGrade = "D";
         }
         else letterGrade = "F";
 

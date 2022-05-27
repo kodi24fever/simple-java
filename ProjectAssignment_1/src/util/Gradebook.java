@@ -5,7 +5,7 @@ package util;
 import java.util.*;
 
 public class Gradebook {
-    private ArrayList<Student> listOfStudents = new ArrayList<>();
+    private ArrayList<Student> listOfStudents;
 
 	// Get List
 	public ArrayList<Student> getListOfStudents(){
@@ -169,7 +169,7 @@ public class Gradebook {
 	// Tab letter for students
 	public void showLetterGrades() {
 		System.out.println("-----------------------------------------------------------------------------");
-		System.out.printf("%10s %20s %10s %10s", "FIRST NAME", "LAST NAME", "PID", "LETTER-GRADE");
+		System.out.printf("%10s %20s %10s %15s", "FIRST NAME", "LAST NAME", "PID", "LETTER-GRADE");
 		System.out.println();
 		System.out.println("-----------------------------------------------------------------------------");
 		for(Student student: listOfStudents){
@@ -180,14 +180,13 @@ public class Gradebook {
 		System.out.println("-----------------------------------------------------------------------------");
 	}
 
-
-
-
+	// Prints all students with score grades
     public void printAllStudents() {
 	for(Student s: listOfStudents)
 	    System.out.printf("%s\t%s\t%d\t%d\n", s.getFirstName(), s.getLastName(), s.getPid(), s.getGrade().getScore());
     }
 
+	// Prints all students with letter grades
 	public void printAllStudentsLetters() {
 		for(Student s: listOfStudents)
 			System.out.printf("%s\t%s\t%d\t%d\n", s.getFirstName(), s.getLastName(), s.getPid(), s.getGrade().getLetterGrade());
@@ -201,7 +200,8 @@ public class Gradebook {
 	// Constructor
 	public Gradebook(){
 		/**
-		 *  Here I should be able to add students to arrayList using student class
+		 *  Creates empty list for list of students
 		 */
+		this.listOfStudents = new ArrayList<>();
 	}
 }

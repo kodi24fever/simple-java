@@ -42,13 +42,13 @@ public class Main {
                     System.out.println("Student information is not complete or accurate.");
                     continue;
                 } else {
-                    //Getting Student OBJ
-                    Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
-
                     //Validate student information
                     ValidateStudentInformation val = new ValidateStudentInformation(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
 
                     if(val.studentMeetsRequirements()){
+                        // Creates new Student obj to be added to gradebook
+                        Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
+
                         gradebook.addStudent(student);
                     }else {
                         if(!val.showFN()){System.out.println("Name is wrong! Try Again.");}
@@ -81,13 +81,13 @@ public class Main {
                     System.out.println("Student information is not complete or accurate.");
                     continue;
                 } else {
-                    //Getting Student OBJ
-                    Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
-
                     //Validate student information
                     ValidateStudentInformation val = new ValidateStudentInformation(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
 
                     if(val.studentMeetsRequirements()){
+                        // Creates new Student obj to be added to gradebook
+                        Student student = new Student(splited[0], splited[1], Integer.parseInt(splited[2]), Integer.parseInt(splited[3]));
+
                         gradebook.addStudent(student);
                     }else {
                         if(!val.showFN()){System.out.println("Name is wrong! Try Again.");}
