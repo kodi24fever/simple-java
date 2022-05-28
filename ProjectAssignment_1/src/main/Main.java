@@ -1,6 +1,7 @@
 package main;
 import util.*;
 
+import java.lang.reflect.Array;
 import java.util.Scanner; // Import java.util.Scanner for getting user input
 import java.util.ArrayList; // Import arrrayList to create studnets
 

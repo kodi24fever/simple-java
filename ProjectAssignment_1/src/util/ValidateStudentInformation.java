@@ -35,7 +35,17 @@ public class ValidateStudentInformation {
      * 4.String.contains(".") to check if contains a dot
      */
     public void validateLastName() {
-        if(this.lastName.matches("[a-zA-Z]+") && Character.isUpperCase(this.lastName.charAt(0)) && !this.lastName.isBlank()){
+        // Initiate count of dots in lastName
+        int dotCount = 0;
+        char tempChar = '.';
+
+        for(int i = 0; i < this.lastName.length(); i++){
+            if(this.lastName.charAt(i) == tempChar){
+                dotCount++;
+            }
+        }
+
+        if(this.lastName.matches("[a-zA-Z.]+") && Character.isUpperCase(this.lastName.charAt(0)) && !this.lastName.isBlank() && !(dotCount >= 2)){
             LNBol = true;
         }else LNBol = false;
     }
