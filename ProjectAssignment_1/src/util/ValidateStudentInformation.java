@@ -61,7 +61,18 @@ public class ValidateStudentInformation {
 
     // Checks if grade is in the range of 0 to 100 including 0 and 100
     public void validateGrade() {
-        if(this.grade >= 0 && this.grade <= 100){
+        // Initiate count of dots in lastName
+        int dotCount = 0;
+        String grade = String.valueOf(this.grade);
+        char tempChar = '.';
+
+        for(int i = 0; i < grade.length(); i++){
+            if(grade.charAt(i) == tempChar){
+                dotCount++;
+            }
+        }
+
+        if(this.grade >= 0 && this.grade <= 100 && !(dotCount >= 2)){
             gradeBol = true;
         }else gradeBol = false;
     }
