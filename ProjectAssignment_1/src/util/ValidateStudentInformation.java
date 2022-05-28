@@ -1,3 +1,8 @@
+/**
+ *  This class was created to have cleaner code in main
+ *  and make this class only for validation purposes
+ */
+
 package util;
 
 public class ValidateStudentInformation {
@@ -61,7 +66,7 @@ public class ValidateStudentInformation {
 
     // Checks if grade is in the range of 0 to 100 including 0 and 100
     public void validateGrade() {
-        // Initiate count of dots in lastName
+        // Initiate count of dots in grade input
         int dotCount = 0;
         String grade = String.valueOf(this.grade);
         char tempChar = '.';
