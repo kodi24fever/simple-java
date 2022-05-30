@@ -164,7 +164,12 @@ public class Main {
                 continue;
             }
             else if(splited.length == 3 && splited[0].matches("change")){
-                System.out.println(gradebook.changeGrade(Integer.parseInt(splited[1]), Double.parseDouble(splited[2])));
+                ValidateStudentInformation val = new ValidateStudentInformation("Test", "Test", Integer.parseInt(splited[1]), Double.parseDouble(splited[2]));
+
+                if(val.showGrade()){
+                    System.out.println(gradebook.changeGrade(Integer.parseInt(splited[1]), Double.parseDouble(splited[2])));
+                }else System.out.println("Grade is wrong!!");
+
                 continue;
             }
             else if(wholeStudent.toLowerCase().matches("average score")){
