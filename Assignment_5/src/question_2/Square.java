@@ -5,6 +5,10 @@ public class Square extends Rectangle {
         super(color, side, side);
     }
 
+    public Square(String color){
+        super(color);
+    }
+
     public String toString(){
         return "Square of side: " + getWidth() + ", perimeter: " + getPerimeter() + ", area: " + getArea();
     }

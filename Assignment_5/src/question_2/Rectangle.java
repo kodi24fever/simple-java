@@ -15,8 +15,29 @@ public class Rectangle extends TwoDShape {
         this.length = length;
     }
 
+    public Rectangle(String color) {
+        super(color);
+        this.width = 5.0;
+        this.length = 7.0;
+    }
+
     public double getPerimeter(){return 2 * ( width * length);}
     public double getArea() {return super.getArea(width, length);}
+
+
+    public void horizontalMarriage(Rectangle another){
+        this.width += another.width;
+        if(this.length < another.length)
+            this.length = another.length;
+    }
+
+    public void horizontalMarriage(Rectangle[] list){
+        for(Rectangle another: list)
+            this.width += another.width;
+
+    }
+
+
 
     @Override
     public String toString(){

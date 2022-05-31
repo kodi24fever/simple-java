@@ -18,10 +18,15 @@ public class Circle extends TwoDShape {
         this.radius = radius;
     }
 
+    public Circle(){
+        super("Blue");
+        this.radius = 1.0;
+    }
+
 
     public double getPerimeter(){return Math.PI * 2 * radius;}
     public double getArea() {return Math.PI * super.getArea(radius, radius);}
 
     @Override
-    public String toString(){return "Circle radius: " + radius;}
+    public String toString(){return "Circle radius: " + radius + " and color: " + getColor();}
 }
