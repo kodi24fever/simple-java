@@ -1,5 +1,7 @@
 package question_2;
 
+import java.util.zip.CheckedInputStream;
+
 public class Rectangle extends TwoDShape {
     private double width, length;
 
@@ -18,6 +20,6 @@ public class Rectangle extends TwoDShape {
 
     @Override
     public String toString(){
-        return "Rectangle width: " + this.width;
+        return "Rectangle width: " + this.width + ", height: " + length + ", perimeter: " + getPerimeter() + ", area: " + getArea();
     }
 }

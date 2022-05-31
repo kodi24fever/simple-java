@@ -1,6 +1,7 @@
 package question_2;
 
-public class TwoDShape {
+// Abstract classes can have methods but no instances
+public abstract class TwoDShape {
     private String color;
 
     public TwoDShape(String color) {
@@ -18,7 +19,11 @@ public class TwoDShape {
     }
 
     public String toString(){
-        return "Generic 2d shape color: " + this.color;
+        return "Generic 2d object, color: " + this.color;
     }
+
+    // An abstract method makes the whole class abstract
+    public abstract double getPerimeter();
+    public abstract double getArea();
 
 }
