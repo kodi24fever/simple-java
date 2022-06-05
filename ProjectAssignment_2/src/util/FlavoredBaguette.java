@@ -3,10 +3,16 @@ package util;
 public abstract class FlavoredBaguette extends Baguette{
 
     private String flavor;
+    private double costOFFlavor;
 
-    public FlavoredBaguette(String name,int cosInCents, String flavor){
+    public double getCost(){
+        return this.costOFFlavor + super.costInCents;
+    }
+
+    public FlavoredBaguette(String name,double cosInCents, String flavor, double costOfFlavor){
         super(name, cosInCents);
         this.flavor = flavor;
+        this. costOFFlavor = costOfFlavor;
 
     }
 }

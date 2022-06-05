@@ -2,7 +2,7 @@ package util;
 
 public abstract class Egg extends Item{
     private int amount;
-    private int costInCents;
+    private double costInCents;
 
 
     @Override
@@ -11,9 +11,7 @@ public abstract class Egg extends Item{
         return (this.amount * costInCents) / dozen;
     }
 
-
-
-    public Egg(String typeOfEgg, int amount, int costInCents){
+    public Egg(String typeOfEgg, int amount, double costInCents){
         super(typeOfEgg);
         this.amount = amount;
         this.costInCents = costInCents;

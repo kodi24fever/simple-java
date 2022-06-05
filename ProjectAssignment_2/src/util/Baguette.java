@@ -2,9 +2,13 @@ package util;
 
 public abstract class Baguette extends Item{
 
-    private int costInCents;
+    protected double costInCents;
 
-    public Baguette(String name, int costInCents){
+    public double getCost(){
+        return this.costInCents;
+    }
+
+    public Baguette(String name, double costInCents){
         super(name);
         this.costInCents = costInCents;
     }

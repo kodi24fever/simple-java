@@ -2,7 +2,6 @@ package util;
 
 public class GroceryStore {
 
-    
     public final static double TAX_RATE = 6.5;        // 6.5%
     public final static String STORE_NAME = "My Little Grocery Store";
     public final static int MAX_ITEM_NAME_SIZE = 25;

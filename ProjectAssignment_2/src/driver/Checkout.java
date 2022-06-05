@@ -14,11 +14,7 @@ public class Checkout {
     }
 
     public int numberOfItems(){
-        int numberOfItems = 0;
-        for(Item item: itemList)
-            numberOfItems += item.getCost();
-
-        return numberOfItems;
+        return itemList.size();
     }
 
     public double totalCost(){
@@ -26,7 +22,13 @@ public class Checkout {
         for(Item item: itemList)
             numberOfItems += item.getCost();
 
-        return numberOfItems;
+        return numberOfItems + (numberOfItems * totalTax());
+    }
+
+    public double totalTax(){
+        GroceryStore groceryStore = new GroceryStore();
+
+        return groceryStore.TAX_RATE;
     }
 
 
