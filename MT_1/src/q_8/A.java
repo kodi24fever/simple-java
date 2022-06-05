@@ -1,7 +1,7 @@
 package q_8;
 
 class A{
-    private int x;
+    public int x;
 
     public A (int x){
         this.x = x;
@@ -26,7 +26,7 @@ class C extends B{
 
 class Test{
     public static void main(String[] args){
-        C c = new C(9);
+        A c = new A(9);
 
         System.out.println(c);
     }
