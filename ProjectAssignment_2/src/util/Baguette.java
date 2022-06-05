@@ -8,6 +8,10 @@ public class Baguette extends Item{
         return this.costInCents;
     }
 
+    public String toString() {
+        return("\n" + super.name + "\t\t" + this.getCost() + "\n");
+    }
+
     public Baguette(String name, double costInCents){
         super(name);
         this.costInCents = costInCents;

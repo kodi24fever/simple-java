@@ -8,6 +8,8 @@ public class Checkout {
     // Initialize itemList variable
     ArrayList<Item> itemList;
 
+    GroceryStore groceryStore = new GroceryStore();
+
 
     public void enterItem(Object item){
         itemList.add((Item) item);
@@ -30,20 +32,21 @@ public class Checkout {
     }
 
     public double totalTax(){
-        GroceryStore groceryStore = new GroceryStore();
-
         return groceryStore.TAX_RATE;
     }
 
-
-
     // Here I put like the receipt type of output
     public String toString(){
-        return "List of items: " + itemList;
+        String receipt = "\t\t" + GroceryStore.STORE_NAME + "\n"+ "-------------------------------------------\n";
+        String itemsAndCost = "";
+
+        for(Item item: itemList)
+            itemsAndCost += item;
+
+        return (receipt + itemsAndCost + "\n" +
+                "Tax \t\t" + groceryStore.TAX_RATE + " % \n\n" +
+                "Total \t\t " + this.totalCost());
     }
-
-
-
 
 
     public Checkout(){

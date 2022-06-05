@@ -9,6 +9,11 @@ public class FlavoredBaguette extends Baguette{
         return this.costOFFlavor + super.costInCents;
     }
 
+    public String toString() {
+        return("\n" + super.name + "\t\t" + this.getCost() + "\n" +
+                "With " + this.flavor + "\t\t" + this.costOFFlavor +"\n");
+    }
+
     public FlavoredBaguette(String name,double cosInCents, String flavor, double costOfFlavor){
         super(name, cosInCents);
         this.flavor = flavor;

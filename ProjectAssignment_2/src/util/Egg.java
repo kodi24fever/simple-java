@@ -11,6 +11,11 @@ public class Egg extends Item{
         return (this.amount * costInCents) / dozen;
     }
 
+    public String toString() {
+        return("\n" + super.name + "\t\t" + this.getCost() + "\n" +
+                this.amount + " @ " + this.costInCents + " cents / dz\n");
+    }
+
     public Egg(String typeOfEgg, int amount, double costInCents){
         super(typeOfEgg);
         this.amount = amount;
