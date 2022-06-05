@@ -22,20 +22,21 @@ public class Checkout {
     }
 
     public int totalCost(){
-        double total = 0;
+        int total = 0;
+
         for(Item item: itemList)
             total += item.getCost();
 
-        return (int) (total + (total * totalTax()/100));
+        return total;
     }
 
-    public double totalTax(){
-        return groceryStore.TAX_RATE;
+    public int totalTax(){
+        return (int) Math.round(totalCost() * groceryStore.TAX_RATE/100.0);
     }
 
     // Here I put like the receipt type of output
     public String toString(){
-        String receipt = "\t\t" + GroceryStore.STORE_NAME + "\n"+ "-------------------------------------------\n";
+        String receipt = "\t\t" + GroceryStore.STORE_NAME + "\n"+ "-------------------------------------------\n\n";
         String itemsAndCost = "";
 
         for(Item item: itemList)
@@ -43,7 +44,8 @@ public class Checkout {
 
         return (receipt + itemsAndCost + "\n" +
                 "Tax \t\t" + groceryStore.TAX_RATE + " % \n\n" +
-                "Total \t\t " + groceryStore.cents2dollarsAndCents(this.totalCost()));
+                "Total \t\t " + groceryStore.cents2dollarsAndCents(this.totalCost() + totalTax())
+        );
     }
 
 

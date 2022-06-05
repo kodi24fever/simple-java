@@ -13,7 +13,7 @@ public class Rice extends Item{
 
     public String toString() {
         return (this.weight + " lbs. @ " + groceryStore.cents2dollarsAndCents(this.costInCents) + " / lb \n" +
-                super.name + "\t\t" + groceryStore.cents2dollarsAndCents(this.getCost())
+                super.name + "\t\t\t\t" + groceryStore.cents2dollarsAndCents(this.getCost())
         );
     }
 

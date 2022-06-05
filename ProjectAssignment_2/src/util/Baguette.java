@@ -11,7 +11,7 @@ public class Baguette extends Item{
     }
 
     public String toString() {
-        return (super.name + "\t\t" + groceryStore.cents2dollarsAndCents(this.getCost())
+        return (super.name + "\t\t\t\t" + groceryStore.cents2dollarsAndCents(this.getCost())
         );
     }
 
