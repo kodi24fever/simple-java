@@ -10,7 +10,7 @@ public class Egg extends Item{
     @Override
     public int getCost(){
         int dozen = 12;
-        return (int) ((this.amount * costInCents) / dozen);
+        return (this.amount * costInCents) / dozen;
     }
 
     @Override
