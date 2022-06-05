@@ -37,15 +37,18 @@ public class Checkout {
     // Here I put like the receipt type of output
     @Override
     public String toString(){
+        String openReceipt = "-------------------------------------------\n";
         String receipt = "\t\t" + GroceryStore.STORE_NAME + "\n"+ "-------------------------------------------\n\n";
         String itemsAndCost = "";
+        String closeReceipt = "\n\n-------------------------------------------";
 
         for(Item item: itemList)
             itemsAndCost += item.toString() + "\n\n";
 
-        return (receipt + itemsAndCost + "\n" +
+        return (openReceipt + receipt + itemsAndCost + "\n" +
                 "Tax \t\t" + groceryStore.cents2dollarsAndCents(totalTax()) + "\n\n" +
-                "Total \t\t " + groceryStore.cents2dollarsAndCents(this.totalCost() + totalTax())
+                "Total \t\t " + groceryStore.cents2dollarsAndCents(this.totalCost() + totalTax()) +
+                closeReceipt
         );
     }
 
