@@ -44,7 +44,7 @@ public class Checkout {
             itemsAndCost += item.toString() + "\n\n";
 
         return (receipt + itemsAndCost + "\n" +
-                "Tax \t\t" + groceryStore.TAX_RATE + " % \n\n" +
+                "Tax \t\t" + groceryStore.cents2dollarsAndCents(totalTax()) + "\n\n" +
                 "Total \t\t " + groceryStore.cents2dollarsAndCents(this.totalCost() + totalTax())
         );
     }
