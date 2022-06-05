@@ -13,6 +13,23 @@ public class Checkout {
         itemList.add((Item) item);
     }
 
+    public int numberOfItems(){
+        int numberOfItems = 0;
+        for(Item item: itemList)
+            numberOfItems += item.getCost();
+
+        return numberOfItems;
+    }
+
+    public double totalCost(){
+        double numberOfItems = 0;
+        for(Item item: itemList)
+            numberOfItems += item.getCost();
+
+        return numberOfItems;
+    }
+
+
 
 
 
