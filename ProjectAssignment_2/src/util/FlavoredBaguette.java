@@ -3,18 +3,18 @@ package util;
 public class FlavoredBaguette extends Baguette{
 
     private String flavor;
-    private double costOFFlavor;
+    private int costOFFlavor;
 
-    public double getCost(){
+    public int getCost(){
         return this.costOFFlavor + super.costInCents;
     }
 
     public String toString() {
-        return("\n" + super.name + "\t\t" + this.getCost() + "\n" +
-                "With " + this.flavor + "\t\t" + this.costOFFlavor +"\n");
+        return( super.name + " with\n" + this.flavor + "\t\t\t\t\t" + groceryStore.cents2dollarsAndCents(this.getCost())
+        );
     }
 
-    public FlavoredBaguette(String name,double cosInCents, String flavor, double costOfFlavor){
+    public FlavoredBaguette(String name,int cosInCents, String flavor, int costOfFlavor){
         super(name, cosInCents);
         this.flavor = flavor;
         this. costOFFlavor = costOfFlavor;

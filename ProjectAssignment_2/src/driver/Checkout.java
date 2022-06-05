@@ -7,9 +7,7 @@ import java.util.*;
 public class Checkout {
     // Initialize itemList variable
     ArrayList<Item> itemList;
-
     GroceryStore groceryStore = new GroceryStore();
-
 
     public void enterItem(Object item){
         itemList.add((Item) item);
@@ -23,12 +21,12 @@ public class Checkout {
         return itemList.size();
     }
 
-    public double totalCost(){
-        double numberOfItems = 0;
+    public int totalCost(){
+        double total = 0;
         for(Item item: itemList)
-            numberOfItems += item.getCost();
+            total += item.getCost();
 
-        return numberOfItems + (numberOfItems * totalTax());
+        return (int) (total + (total * totalTax()/100));
     }
 
     public double totalTax(){
@@ -41,11 +39,11 @@ public class Checkout {
         String itemsAndCost = "";
 
         for(Item item: itemList)
-            itemsAndCost += item;
+            itemsAndCost += item.toString() + "\n\n";
 
         return (receipt + itemsAndCost + "\n" +
                 "Tax \t\t" + groceryStore.TAX_RATE + " % \n\n" +
-                "Total \t\t " + this.totalCost());
+                "Total \t\t " + groceryStore.cents2dollarsAndCents(this.totalCost()));
     }
 
 

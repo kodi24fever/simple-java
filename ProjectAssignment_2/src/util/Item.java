@@ -7,7 +7,7 @@ public abstract class Item {
 	return name;
     }
 
-    public abstract double getCost();
+    public abstract int getCost();
 
     public Item(String name) {
 	if (name.length() <= GroceryStore.MAX_ITEM_NAME_SIZE)

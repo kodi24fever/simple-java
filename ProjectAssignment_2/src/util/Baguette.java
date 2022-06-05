@@ -2,17 +2,20 @@ package util;
 
 public class Baguette extends Item{
 
-    protected double costInCents;
+    protected int costInCents;
 
-    public double getCost(){
+    GroceryStore groceryStore = new GroceryStore();
+
+    public int getCost(){
         return this.costInCents;
     }
 
     public String toString() {
-        return("\n" + super.name + "\t\t" + this.getCost() + "\n");
+        return (super.name + "\t\t" + groceryStore.cents2dollarsAndCents(this.getCost())
+        );
     }
 
-    public Baguette(String name, double costInCents){
+    public Baguette(String name, int costInCents){
         super(name);
         this.costInCents = costInCents;
     }

@@ -2,19 +2,22 @@ package util;
 
 public class Rice extends Item{
     private double weight;
-    private double costInCents;
+    private int costInCents;
+
+    GroceryStore groceryStore = new GroceryStore();
 
     @Override
-    public double getCost(){
-        return this.weight * this.costInCents;
+    public int getCost(){
+        return (int) (this.weight * this.costInCents);
     }
 
     public String toString() {
-        return("\n" + super.name + "\t\t" + this.getCost() + "\n" +
-                this.weight + " lbs." + " @ " + this.costInCents + " cents / lb\n");
+        return (this.weight + " lbs. @ " + groceryStore.cents2dollarsAndCents(this.costInCents) + " / lb \n" +
+                super.name + "\t\t" + groceryStore.cents2dollarsAndCents(this.getCost())
+        );
     }
 
-    public Rice(String name, double weight, double costInCents){
+    public Rice(String name, double weight, int costInCents){
         super(name);
         this.weight = weight;
         this.costInCents = costInCents;
