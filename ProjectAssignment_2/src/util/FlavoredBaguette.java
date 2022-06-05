@@ -1,6 +1,6 @@
 package util;
 
-public abstract class FlavoredBaguette extends Baguette{
+public class FlavoredBaguette extends Baguette{
 
     private String flavor;
     private double costOFFlavor;

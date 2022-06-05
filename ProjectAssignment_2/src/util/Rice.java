@@ -1,6 +1,6 @@
 package util;
 
-public abstract class Rice extends Item{
+public class Rice extends Item{
     private double weight;
     private double costInCents;
 

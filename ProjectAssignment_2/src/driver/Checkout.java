@@ -13,6 +13,10 @@ public class Checkout {
         itemList.add((Item) item);
     }
 
+    public void clear(){
+        itemList.removeAll(itemList);
+    }
+
     public int numberOfItems(){
         return itemList.size();
     }
@@ -29,6 +33,13 @@ public class Checkout {
         GroceryStore groceryStore = new GroceryStore();
 
         return groceryStore.TAX_RATE;
+    }
+
+
+
+    // Here I put like the receipt type of output
+    public String toString(){
+        return "List of items: " + itemList;
     }
 
 

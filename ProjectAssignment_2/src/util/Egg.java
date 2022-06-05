@@ -1,6 +1,6 @@
 package util;
 
-public abstract class Egg extends Item{
+public class Egg extends Item{
     private int amount;
     private double costInCents;
 

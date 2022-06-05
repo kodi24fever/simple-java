@@ -1,6 +1,6 @@
 package util;
 
-public abstract class Baguette extends Item{
+public class Baguette extends Item{
 
     protected double costInCents;
 
