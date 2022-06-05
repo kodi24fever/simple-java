@@ -34,6 +34,7 @@ public class Checkout {
     }
 
     // Here I put like the receipt type of output
+    @Override
     public String toString(){
         String receipt = "\t\t" + GroceryStore.STORE_NAME + "\n"+ "-------------------------------------------\n";
         String itemsAndCost = "";
