@@ -15,7 +15,7 @@ public class Egg extends Item{
 
     @Override
     public String toString() {
-        return( this.amount + " @ " + groceryStore.cents2dollarsAndCents(this.costInCents) + " / dz\n" +
+        return( this.amount + " @ " + groceryStore.cents2dollarsAndCents(this.costInCents) + " /dz.\n" +
                 super.name + "\t\t\t\t" + groceryStore.cents2dollarsAndCents(this.getCost())
         );
     }
