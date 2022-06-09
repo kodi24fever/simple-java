@@ -34,10 +34,9 @@ class Appetizer extends Food{
 //            this.courseList.add(courseList[i]);
 //        }
     }
-
     @Override
     public String toString(){
-        return "Appetizer " + super.name;
+        return "Appetizer " + super.toString();
     }
 
 }
@@ -49,12 +48,12 @@ class MainCourse extends Food{
         return this.appetizerList;
     }
 
-    public MainCourse(String name, Appetizer[] appetizer){
+    public MainCourse(String name, Appetizer[] appetizerList){
         super(name);
-        for(int i = 0; i < appetizer.length; i++){
-            this.appetizerList[i] = appetizer[i];
-        }
-
+        this.appetizerList = appetizerList;
+//        for(int i = 0; i < appetizer.length; i++){
+//            this.appetizerList[i] = appetizer[i];
+//        }
     }
 
 }
