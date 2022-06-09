@@ -2,8 +2,6 @@ package q_7;
 
 import java.util.*;
 
-
-
 class Food {
     protected String name;
     public Food(String name){this.name = name;}
@@ -20,15 +18,21 @@ class Food {
 class Appetizer extends Food{
     private ArrayList<MainCourse> courseList;
 
-    public ArrayList getCourseList(){
+    public ArrayList<MainCourse> getCourseList(){
         return courseList;
     }
 
-    public Appetizer(String name,  MainCourse[] mainCourses){
+    public Appetizer(String name,  MainCourse[] courseList){
         super(name);
-        for(int i = 0; i < mainCourses.length; i++){
-            this.courseList.add(mainCourses[i]);
+        this.courseList = new ArrayList<MainCourse>();
+        for(MainCourse mainCourse: courseList){
+            this.courseList.add(mainCourse);
         }
+
+//        another for loop
+//        for(int i = 0; i < courseList.length; i++){
+//            this.courseList.add(courseList[i]);
+//        }
     }
 
     @Override
