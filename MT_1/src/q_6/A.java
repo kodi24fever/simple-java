@@ -2,18 +2,18 @@ package q_6;
 
 class A {
     void m1(Object obj) {
-        System.out.println("A's method ");
+        System.out.print("A's method ");
     }
 }
 
 class B extends A {
     void m1(Object obj){
         super.m1(null);
-        System.out.println("B's first method ");
+        System.out.print("B's first method ");
     }
 
     void m1(Object obj, String message){
-        System.out.println("B's second method: " + message);
+        System.out.print("B's second method: " + message);
     }
 }
 
