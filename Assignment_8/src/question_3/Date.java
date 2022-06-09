@@ -1,12 +1,23 @@
 package question_3;
-//Given the following program and class Date, pick the correct implementation of the compareTo method from Comparable interface for class Date so that the program can successfully sort and print the dates stored in array days. Your implementation should work for any valid list of dates in the array.
+import java.util.*;
 
-        import java.util.*;
+/**
+ * Given the following program and class Date, pick the correct implementation
+ * of the compareTo method fromComparable interface for class Date so that the
+ * program can successfully sort and print the dates stored in array days.
+ * Your implementation should work for any valid list of dates in the array.
+ */
+
+// Comparable interface can be implemented in any class
 class Date implements Comparable{
     int month, day, year;
     public int compareTo(Object another){
         if(another instanceof Date){
-            /*your code*/
+            Date d = (Date)another; return year != d.year? year - d.year: month != d.month? month - d.month: day - d.day;
+
+            //(INCORRECT) Date d = (Date)another; return 366*(year-d.y) + 31*(month-d.month)+(day-d.day);
+
+            //Date d = (Date)another; return 372*(year-d.y) + 31*(month-d.month)+(day-d.day);
         }
         return 0;
     }
