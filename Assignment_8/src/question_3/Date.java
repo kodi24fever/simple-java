@@ -13,11 +13,11 @@ class Date implements Comparable{
     int month, day, year;
     public int compareTo(Object another){
         if(another instanceof Date){
-            Date d = (Date)another; return year != d.year? year - d.year: month != d.month? month - d.month: day - d.day;
+            //Date d = (Date)another; return year != d.year? year - d.year: month != d.month? month - d.month: day - d.day;
 
             //(INCORRECT) Date d = (Date)another; return 366*(year-d.y) + 31*(month-d.month)+(day-d.day);
 
-            //Date d = (Date)another; return 372*(year-d.y) + 31*(month-d.month)+(day-d.day);
+            Date d = (Date)another; return 372*(year-d.year) + 31*(month-d.month)+(day-d.day);
         }
         return 0;
     }
