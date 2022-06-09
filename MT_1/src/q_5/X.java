@@ -7,6 +7,7 @@ class X {
 }
 class Y extends X {
     public Y(){
+        // calling super fix the problem
         super(0);
         System.out.println("two");
     }
