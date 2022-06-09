@@ -61,7 +61,6 @@ class MainCourse extends Food{
 class Test {
     public static void main(String[] args){
 
-
         Food f = new Food("Brownie");
 
         System.out.println(f);

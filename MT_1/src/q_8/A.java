@@ -1,7 +1,7 @@
 package q_8;
 
 class A{
-    public int x;
+    private int x;
 
     public A (int x){
         this.x = x;
