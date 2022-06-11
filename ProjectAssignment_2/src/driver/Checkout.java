@@ -9,8 +9,8 @@ public class Checkout {
     ArrayList<Item> itemList;
     GroceryStore groceryStore = new GroceryStore();
 
-    public void enterItem(Object item){
-        itemList.add((Item) item);
+    public void enterItem(Item item){
+        itemList.add(item);
     }
 
     public void clear(){
@@ -34,7 +34,6 @@ public class Checkout {
         return (int) Math.round(totalCost() * groceryStore.TAX_RATE/100.0);
     }
 
-    // Here I put like the receipt type of output
     @Override
     public String toString(){
         String openReceipt = "\t-------------------\n";

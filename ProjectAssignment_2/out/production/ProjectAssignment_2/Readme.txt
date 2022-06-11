@@ -7,7 +7,7 @@ Checkout Class
 2- clear is a void method that removes all items from the list and leaves it empty.
 3- numberOfItems method returns the size of itemList in an Integer value.
 4- totalCost method returns the totalCost of all items in Integer value.
-5- totalTax method returns total tax rate for the totalCost of the items in an rounded Integer value.
+5- totatx method returns total tax rate for the totalCost of the items in an rounded Integer value.
 6- toString method adds the receipt header plus calling items toString mehtods togeter forming the entire receipt.
 
 All classes child of Item abstract class
