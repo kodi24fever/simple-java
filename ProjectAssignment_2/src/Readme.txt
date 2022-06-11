@@ -14,4 +14,4 @@ All classes child of Item abstract class
 1- getCost method returns the cost for each type of item.
 2- toString method returns the specific value checkout is charging customers.
 3- constructor to initialize local variables.
-4- FlavoredBaguette class is the only one that passes more paramters to the constructor because it is child of Baguette class.   
+4- FlavoredBaguette class is the only one that passes more parameters to the constructor because it is child of Baguette class.
