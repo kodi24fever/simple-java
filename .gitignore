@@ -1,6 +1,0 @@
-#ignore all . files and folders (to include write it like !. and the file to be included)
-
-
-.*
-/out
-*.iml
