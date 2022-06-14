@@ -3,5 +3,5 @@
 
 
 .*
-/ProjectAssignment_2/out
+out/
 *.iml
