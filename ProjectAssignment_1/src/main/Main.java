@@ -27,7 +27,6 @@ public class Main {
          */
         System.out.println("Welcome to my grade book!");
 
-
         // While loop for adding students to arrayList
         while(true){
             if(gradebook.getListOfStudents().size() < 1) {
