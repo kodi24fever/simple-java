@@ -11,6 +11,10 @@ public class Main {
         temp.accelerate(20);
         listOfDrivableObjects.add(temp);
 
+        temp = new Car("Elektra");
+        temp.accelerate(20);
+        listOfDrivableObjects.add(temp);
+
         for (Drivable drive: listOfDrivableObjects)
              System.out.println(drive.toString() + " speeds to: " + drive.getSpeed() + " km/h");
 
