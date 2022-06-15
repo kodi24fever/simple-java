@@ -1,7 +1,6 @@
 package util;
 
 public class Student implements CSVPrintable {
-
     private String firstName;
     private String lastName;
     private long phoneNUmber;
@@ -26,7 +25,6 @@ public class Student implements CSVPrintable {
         // Here instead of printing PRINT to csv file directly
         System.out.println(getName() + "," + getID() + "," + this.phoneNUmber);
     }
-
 
     public Student(String firstName, String lastName, long phoneNumber, int studentID){
         this.firstName = firstName;
