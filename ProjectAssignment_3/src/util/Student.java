@@ -8,4 +8,13 @@ public class Student {
 
     private int studentID;
 
+
+    public Student(String name, long phoneNumber, int studentID){
+
+        this.name = name;
+        this.phoneNUmber = phoneNumber;
+        this.studentID = studentID;
+
+    }
+
 }
