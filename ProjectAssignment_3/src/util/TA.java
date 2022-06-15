@@ -4,8 +4,8 @@ public class TA extends Student{
 
 
     // Constructor
-    public TA(String name, long phoneNumber, int studentID){
-        super(name, phoneNumber, studentID);
+    public TA(String firstName, String lastName, long phoneNumber, int studentID){
+        super(firstName, lastName, phoneNumber, studentID);
     }
 
 }
