@@ -1,6 +1,5 @@
 package util;
 
-import java.io.File;
 import java.io.*;
 
 public class Teacher implements CSVPrintable {
