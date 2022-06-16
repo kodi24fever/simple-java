@@ -26,11 +26,11 @@ public class Student implements CSVPrintable {
         System.out.println(getName() + "," + getID() + "," + this.phoneNUmber);
     }
 
-    public Student(String firstName, String lastName, long phoneNumber, int studentID){
+    public Student(String firstName, String lastName, int studentID, long phoneNumber){
         this.firstName = firstName;
         this.lastName = lastName;
-        this.phoneNUmber = phoneNumber;
         this.studentID = studentID;
+        this.phoneNUmber = phoneNumber;
     }
 
 }

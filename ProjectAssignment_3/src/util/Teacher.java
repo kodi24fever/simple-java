@@ -1,11 +1,14 @@
 package util;
 
-public class Teacher {
+public class Teacher implements CSVPrintable {
 
     private String firstName;
     private String lastName;
     private int teacherID;
     private int phoneNUmber;
+
+
+
 
 
     //Constructor
@@ -16,4 +19,18 @@ public class Teacher {
         this.phoneNUmber = phoneNUmber;
     }
 
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public int getID() {
+        return this.teacherID;
+    }
+
+    @Override
+    public void csvPrintln() {
+
+    }
 }
