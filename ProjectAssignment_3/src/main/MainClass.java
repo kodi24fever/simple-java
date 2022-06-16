@@ -14,69 +14,20 @@ public class MainClass {
 
 
     private static class ValidateInformation {
-        private long phoneNumber;
-        private int studentID;
-        private int teacherID;
+        public boolean isIDValid(int ID){
+            String convertIDtoString = Integer.toString(ID);
 
-        private boolean isStudentIDValid;
-        private boolean isTeacherIDValid;
-        private boolean isPhoneValid;
-
-        public void isStudentIDValid(){
-            String convertIDtoString = Integer.toString(this.studentID);
-
-            if(convertIDtoString.length() == 5 || convertIDtoString == "0"){
-                isStudentIDValid = true;
-
-            }else isStudentIDValid = false;
-        }
-
-        public void isTeacherIDValid(){
-            String convertIDtoString = Integer.toString(this.teacherID);
-
-            if(convertIDtoString.length() == 5 || convertIDtoString == "0"){
-                isTeacherIDValid = true;
-
-            }else isTeacherIDValid = false;
-        }
-
-        public void isPhoneNumberValid(){
-            String convertIDtoString = Long.toString(this.phoneNumber);
-
-            if(convertIDtoString.length() == 10){
-
-                isPhoneValid = true;
-            }else isPhoneValid = false;
-        }
-
-        public boolean validateAll(){
-            if(isTeacherIDValid && isStudentIDValid && isPhoneValid){
+            if(convertIDtoString.length() == 5 || (convertIDtoString.length() == 1 && convertIDtoString.charAt(0) == '0')){
                 return true;
             }else return false;
         }
 
-        // Getters for booleans
-        public boolean getIsTeacherIDValid(){
-            return isTeacherIDValid;
-        }
-        public boolean getIsStudentIDValid(){
-            return isStudentIDValid;
-        }
-        public boolean getIsPhoneValid(){
-            return isPhoneValid;
-        }
+        public boolean isPhoneNumberValid(long phoneNumber){
+            String convertIDtoString = Long.toString(phoneNumber);
 
-        // ValidateInformation class constructor
-        public ValidateInformation(int studentID,int teacherID, long phoneNumber){
-            this.teacherID = teacherID;
-            this.studentID = studentID;
-            this.phoneNumber = phoneNumber;
-
-
-            // Run local methods to check for validation
-            this.isStudentIDValid();
-            this.isTeacherIDValid();
-            this.isPhoneNumberValid();
+            if(convertIDtoString.length() == 10){
+                return true;
+            }else return false;
         }
     }
 
@@ -117,8 +68,6 @@ public class MainClass {
 
             if(splitted.length != 6){
                 System.out.println("Information is not accurate. Try again!");
-                continue;
-
             }else {
 
                 // Getting the tokens
@@ -130,15 +79,21 @@ public class MainClass {
                 phoneNUmber = Long.parseLong(splitted[5]);
 
                 // Validate object
-                ValidateInformation val = new ValidateInformation(studentID, teacherID, phoneNUmber);
+                ValidateInformation val = new ValidateInformation();
 
-                if(val.validateAll()){
+                System.out.println(val.isIDValid(studentID));
+                System.out.println(val.isIDValid(teacherID));
+
+
+
+                if(val.isIDValid(studentID) && val.isIDValid(teacherID) && val.isPhoneNumberValid(phoneNUmber)){
 
                     // Checks that positions are well entered
                     if(!position.toLowerCase().matches("teacher") || !position.toLowerCase().matches("student") || !position.toLowerCase().matches("ta")){System.out.println("Wrong position. Must be \"teacher, student, or ta\". Try again!");}
 
                     // Starts command phase
                     if(position.toLowerCase().matches("teacher")){
+
                         if(studentID != 0){
                             System.out.println("When position is teacher student ID must be 0. Try again!");
                         }else {
@@ -182,13 +137,12 @@ public class MainClass {
 
                         // Total Lines decrease to close loop
                         totalLines--;
-
                     }
 
                 } else {
-                    if(!val.getIsStudentIDValid()) {System.out.println("Wong ID. Student ID must be 5 digits or 0, depending in the position. Try again!");}
-                    if(!val.getIsTeacherIDValid()) {System.out.println("Wong ID. Teacher ID must be 5 digits or 0, depending in the position. Try again!");}
-                    if(!val.getIsPhoneValid()) {System.out.println("Phone Number is not 10 digits. Try again!");}
+                    if(!val.isIDValid(studentID)) {System.out.println("Wong ID. Student ID must be 5 digits or 0, depending in the position. Try again!");}
+                    if(!val.isIDValid(teacherID)) {System.out.println("Wong ID. Teacher ID must be 5 digits or 0, depending in the position. Try again!");}
+                    if(!val.isPhoneNumberValid(phoneNUmber)) {System.out.println("Phone Number is not 10 digits. Try again!");}
                 }
 
             }
