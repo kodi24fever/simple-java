@@ -1,10 +1,15 @@
 package main;
 
-
 import java.util.*;
 import util.*;
 
+//import printer objects
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 public class MainClass {
+
+    public static final String OUTPUT = System.getProperty("user.dir") + "/output/";
 
 
     private static class ValidateInformation {
@@ -58,10 +63,13 @@ public class MainClass {
     }
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException{
 
         // Scanner object
         Scanner userInput = new Scanner(System.in);
+
+        //printer object
+        PrintWriter out = new PrintWriter(OUTPUT + "out.csv");
 
         //Array list to temporarily store ids to sort them for TA's and get maximum value
         ArrayList<Integer> saveAllIds = new ArrayList<>();
