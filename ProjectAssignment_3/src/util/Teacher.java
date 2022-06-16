@@ -6,8 +6,10 @@ import java.io.PrintWriter;
 public class Teacher implements CSVPrintable {
 
     public static final String OUTPUT = System.getProperty("user.dir") + "/output/";
+
+    String fileName = OUTPUT + "out.csv";
     //printer object
-    PrintWriter out = new PrintWriter(OUTPUT + "out.csv");
+    PrintWriter out = new PrintWriter(fileName, true);
 
     private String firstName;
     private String lastName;
