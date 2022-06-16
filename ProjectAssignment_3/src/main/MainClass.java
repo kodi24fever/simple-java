@@ -11,17 +11,28 @@ public class MainClass {
         private long phoneNumber;
         private int ID;
 
-        public boolean isIDValid(){
+        private boolean isIDValid;
+        private boolean isPhoneValid;
+
+        public void isIDValid(){
             String convertIDtoString = Integer.toString(this.ID);
 
             if(convertIDtoString.length() == 5 || convertIDtoString == "0"){
-                return true;
-            }else return false;
+                isIDValid = true;
+                System.out.println("Wong ID. ID must be 5 digits. Try again!");
+            }else isIDValid = false;
         }
-        public boolean isPhoneNumberValid(){
+        public void isPhoneNumberValid(){
             String convertIDtoString = Long.toString(this.phoneNumber);
 
-            if(convertIDtoString.length() == 10){
+            if(!(convertIDtoString.length() == 10)){
+                System.out.println("Phone Number is not 10 digits. Try again!");
+                isPhoneValid = false;
+            }else isPhoneValid = true;
+        }
+
+        public boolean validateAll(){
+            if(isIDValid && isPhoneValid){
                 return true;
             }else return false;
         }
@@ -73,22 +84,23 @@ public class MainClass {
 
                 ValidateInformation val = new ValidateInformation(ID, phoneNUmber);
 
-                if(val.isIDValid() && val.isIDValid()){
+                if(val.validateAll()){
 
-
-
+                    // Starts command phase
                     if(position.toLowerCase().matches("teacher")){
-
                         String last4Digits = splitted[4].substring((splitted[4].length() - 4), splitted[4].length());
-
                         Teacher teacher = new Teacher(firstName,lastName,ID,Integer.parseInt(last4Digits));
 
-                        System.out.println(teacher.getID());
-                    } else if(position.toLowerCase().matches("student")) {
+                    }
 
+                    if(position.toLowerCase().matches("student")) {
                         Student student = new Student(firstName, lastName, ID, phoneNUmber);
 
-                        System.out.println(student.getID());
+                    }
+
+                    if(position.toLowerCase().matches("ta")) {
+                        TA ta = new TA(firstName, lastName, ID, phoneNUmber);
+
                     }
 
                 }
