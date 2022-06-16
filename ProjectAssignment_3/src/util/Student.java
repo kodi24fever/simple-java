@@ -1,6 +1,15 @@
 package util;
 
+import java.io.PrintWriter;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 public class Student implements CSVPrintable {
+
+    public static final String OUTPUT = System.getProperty("user.dir") + "/output/";
+    //printer object
+    PrintWriter out = new PrintWriter(OUTPUT + "out.csv");
     private String firstName;
     private String lastName;
     private long phoneNUmber;
@@ -23,10 +32,13 @@ public class Student implements CSVPrintable {
     @Override
     public void csvPrintln() {
         // Here instead of printing PRINT to csv file directly
-        System.out.println(getName() + "," + getID() + "," + this.phoneNUmber);
+        out.println(getName() + "," + getID() + "," + this.phoneNUmber);
+
+        out.flush();
+        out.close();
     }
 
-    public Student(String firstName, String lastName, int studentID, long phoneNumber){
+    public Student(String firstName, String lastName, int studentID, long phoneNumber) throws FileNotFoundException {
         this.firstName = firstName;
         this.lastName = lastName;
         this.studentID = studentID;
