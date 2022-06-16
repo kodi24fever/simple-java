@@ -112,6 +112,10 @@ public class MainClass {
                         // Add id to ArrayList
                         saveAllIds.add(ID);
 
+
+
+                        teacher.csvPrintln();
+
                         // Total Lines decrease to close loop
                         totalLines--;
 
@@ -123,6 +127,8 @@ public class MainClass {
                         // Add id to ArrayList
                         saveAllIds.add(ID);
 
+                        student.csvPrintln();
+
                         // Total Lines decrease to close loop
                         totalLines--;
 
@@ -132,6 +138,9 @@ public class MainClass {
 
                         // Collections.max adds to TA the max value of ID's in the arrayList
                         TA ta = new TA(firstName, lastName, Collections.max(saveAllIds), phoneNUmber);
+
+
+                        ta.csvPrintln();
 
                         // Total Lines decrease to close loop
                         totalLines--;

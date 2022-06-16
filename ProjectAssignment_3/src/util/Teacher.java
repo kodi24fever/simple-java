@@ -24,7 +24,7 @@ public class Teacher implements CSVPrintable {
 
     @Override
     public void csvPrintln() {
-
+        System.out.println(getName() + "," + getID() + "." + this.phoneNUmber);
     }
 
     //Constructor

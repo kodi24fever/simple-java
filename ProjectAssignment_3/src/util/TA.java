@@ -3,6 +3,8 @@ package util;
 public class TA extends Student{
 
     private int IDOfTA;
+    private long phone;
+
     @Override
     public String getName() {
         return super.getName();
@@ -15,13 +17,14 @@ public class TA extends Student{
 
     @Override
     public void csvPrintln() {
-        super.csvPrintln();
+        System.out.println(super.getName() + "," + getID() + "." + this.phone);
     }
 
     // Constructor
     public TA(String firstName, String lastName, int studentID,long phoneNumber){
         super(firstName, lastName, studentID, phoneNumber);
         this.IDOfTA = studentID;
+        this.phone = phoneNumber;
     }
 
 }
