@@ -19,16 +19,16 @@ public class MainClass {
 
             if(convertIDtoString.length() == 5 || convertIDtoString == "0"){
                 isIDValid = true;
-                System.out.println("Wong ID. ID must be 5 digits. Try again!");
+
             }else isIDValid = false;
         }
         public void isPhoneNumberValid(){
             String convertIDtoString = Long.toString(this.phoneNumber);
 
-            if(!(convertIDtoString.length() == 10)){
-                System.out.println("Phone Number is not 10 digits. Try again!");
-                isPhoneValid = false;
-            }else isPhoneValid = true;
+            if(convertIDtoString.length() == 10){
+
+                isPhoneValid = true;
+            }else isPhoneValid = false;
         }
 
         public boolean validateAll(){
@@ -37,10 +37,23 @@ public class MainClass {
             }else return false;
         }
 
+        // Getters for booleans
+        public boolean getIsIDValid(){
+            return isIDValid;
+        }
+        public boolean getIsPhoneValid(){
+            return isPhoneValid;
+        }
 
+        // ValidateInformation class constructor
         public ValidateInformation(int ID, long phoneNumber){
             this.ID = ID;
             this.phoneNumber = phoneNumber;
+
+
+            // Run local methods to check for validation
+            this.isIDValid();
+            this.isPhoneNumberValid();
         }
     }
 
@@ -82,37 +95,45 @@ public class MainClass {
                 ID = Integer.parseInt(splitted[3]);
                 phoneNUmber = Long.parseLong(splitted[4]);
 
+
+
+                // Validate object
                 ValidateInformation val = new ValidateInformation(ID, phoneNUmber);
 
                 if(val.validateAll()){
-
                     // Starts command phase
                     if(position.toLowerCase().matches("teacher")){
                         String last4Digits = splitted[4].substring((splitted[4].length() - 4), splitted[4].length());
                         Teacher teacher = new Teacher(firstName,lastName,ID,Integer.parseInt(last4Digits));
+
+                        // Total Lines decrease to close loop
+                        totalLines--;
 
                     }
 
                     if(position.toLowerCase().matches("student")) {
                         Student student = new Student(firstName, lastName, ID, phoneNUmber);
 
+                        // Total Lines decrease to close loop
+                        totalLines--;
+
                     }
 
                     if(position.toLowerCase().matches("ta")) {
                         TA ta = new TA(firstName, lastName, ID, phoneNUmber);
 
+                        // Total Lines decrease to close loop
+                        totalLines--;
+
                     }
 
+                } else {
+
+                    if(!val.getIsIDValid()) {System.out.println("Wong ID. ID must be 5 digits. Try again!");}
+                    if(!val.getIsPhoneValid()) {System.out.println("Phone Number is not 10 digits. Try again!");}
                 }
 
             }
-
-
-
-
-
-            // Total Lines decrease to close loop
-            totalLines--;
         }
 
     }

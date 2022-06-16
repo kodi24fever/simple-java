@@ -8,17 +8,6 @@ public class Teacher implements CSVPrintable {
     private int phoneNUmber;
 
 
-
-
-
-    //Constructor
-    public Teacher(String firstName, String lastName, int teacherID, int phoneNUmber){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.teacherID = teacherID;
-        this.phoneNUmber = phoneNUmber;
-    }
-
     @Override
     public String getName() {
         return null;
@@ -33,4 +22,13 @@ public class Teacher implements CSVPrintable {
     public void csvPrintln() {
 
     }
+
+    //Constructor
+    public Teacher(String firstName, String lastName, int teacherID, int phoneNUmber){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.teacherID = teacherID;
+        this.phoneNUmber = phoneNUmber;
+    }
+
 }
