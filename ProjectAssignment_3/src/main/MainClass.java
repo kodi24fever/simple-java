@@ -12,7 +12,6 @@ public class MainClass {
 
     public static final String OUTPUT = System.getProperty("user.dir") + "/output/";
 
-
     private static class ValidateInformation {
         public boolean isIDValid(int ID){
             String convertIDtoString = Integer.toString(ID);
@@ -31,8 +30,7 @@ public class MainClass {
         }
     }
 
-
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, NumberFormatException {
 
         // Scanner object
         Scanner userInput = new Scanner(System.in);
@@ -50,15 +48,26 @@ public class MainClass {
         int studentID = 0;
         int teacherID = 0;
         long phoneNUmber = 0;
-
         int totalLines = 0;
 
         System.out.println("Please enter the total amount of students, teachers, and TA's in a number format");
 
         // Here I have to check if the value is an integer
-        String totalStudentsToEnter = userInput.nextLine();
+        while(true){
+            String totalStudentsToEnter = userInput.nextLine();
+            try{
+                totalLines = Integer.parseInt(totalStudentsToEnter);
+                if(totalLines > 0){
+                    break;
+                }else System.out.println("It can't be negative or 0. Try Again!");
 
-        totalLines = Integer.parseInt(totalStudentsToEnter);
+            }catch (NumberFormatException exception){
+                System.out.println("Must be an Integer greater than 0. Try Again!");
+            }
+        }
+
+
+
 
         while(totalLines > 0){
             System.out.println("Enter Information in the format \"Firstname,Lastname ID PhoneNumber\"");
@@ -140,8 +149,8 @@ public class MainClass {
                     }
 
                 } else {
-                    if(!val.isIDValid(studentID)) {System.out.println("Wong ID. Student ID must be 5 digits or 0, depending in the position. Try again!");}
-                    if(!val.isIDValid(teacherID)) {System.out.println("Wong ID. Teacher ID must be 5 digits or 0, depending in the position. Try again!");}
+                    if(!val.isIDValid(studentID)) {System.out.println("Wrong ID. Student ID must be 5 digits or 0, depending in the position. Try again!");}
+                    if(!val.isIDValid(teacherID)) {System.out.println("Wrong ID. Teacher ID must be 5 digits or 0, depending in the position. Try again!");}
                     if(!val.isPhoneNumberValid(phoneNUmber)) {System.out.println("Phone Number is not 10 digits. Try again!");}
                 }
 
