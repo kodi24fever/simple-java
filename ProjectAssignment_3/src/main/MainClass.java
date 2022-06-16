@@ -1,15 +1,10 @@
 package main;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import util.*;
 
-//import printer objects
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-
 public class MainClass {
-
     public static final String OUTPUT = System.getProperty("user.dir") + "/output/";
 
     private static class ValidateInformation {
@@ -42,6 +37,8 @@ public class MainClass {
         ArrayList<Integer> saveAllIds = new ArrayList<>();
 
         String splitted[] = {};
+        String splitFullName[] = {};
+        String fullNameWithComma = "";
         String position = "";
         String firstName = "";
         String lastName = "";
@@ -66,44 +63,38 @@ public class MainClass {
             }
         }
 
-
-
-
         while(totalLines > 0){
-            System.out.println("Enter Information in the format \"Firstname,Lastname ID PhoneNumber\"");
+            System.out.println("Enter Information in the format \"Position Firstname,Lastname StudentID TeacherID PhoneNumber\"");
 
             String inputInformation = userInput.nextLine();
             splitted = inputInformation.split(" ");
 
-            if(splitted.length != 6){
+            if(splitted.length != 5){
                 System.out.println("Information is not accurate. Try again!");
             }else {
 
+                fullNameWithComma = splitted[1];
+                splitFullName = fullNameWithComma.split(",");
+
                 // Getting the tokens
                 position = splitted[0];
-                firstName = splitted[1];
-                lastName = splitted[2];
-                studentID = Integer.parseInt(splitted[3]);
-                teacherID = Integer.parseInt(splitted[4]);
-                phoneNUmber = Long.parseLong(splitted[5]);
+                firstName = splitFullName[0];
+                lastName = splitFullName[1];
+                studentID = Integer.parseInt(splitted[2]);
+                teacherID = Integer.parseInt(splitted[3]);
+                phoneNUmber = Long.parseLong(splitted[4]);
 
                 // Validate object
                 ValidateInformation val = new ValidateInformation();
 
-                System.out.println(val.isIDValid(studentID));
-                System.out.println(val.isIDValid(teacherID));
-
-
 
                 if(val.isIDValid(studentID) && val.isIDValid(teacherID) && val.isPhoneNumberValid(phoneNUmber)){
-
-                    // Checks that positions are well entered
-                    if(!position.toLowerCase().matches("teacher") || !position.toLowerCase().matches("student") || !position.toLowerCase().matches("ta")){System.out.println("Wrong position. Must be \"teacher, student, or ta\". Try again!");}
 
                     // Starts command phase
                     if(position.toLowerCase().matches("teacher")){
 
                         if(studentID != 0){
+
                             System.out.println("When position is teacher student ID must be 0. Try again!");
                         }else {
                             String last4Digits = splitted[4].substring((splitted[4].length() - 4), splitted[4].length());
@@ -116,9 +107,7 @@ public class MainClass {
                             // Total Lines decrease to close loop
                             totalLines--;
                         }
-                    }
-
-                    if(position.toLowerCase().matches("student")) {
+                    } else if(position.toLowerCase().matches("student")) {
 
                         if(teacherID != 0){
                             System.out.println("When position is student, teacher ID must be 0. Try again!");
@@ -134,9 +123,7 @@ public class MainClass {
                             // Total Lines decrease to close loop
                             totalLines--;
                         }
-                    }
-
-                    if(position.toLowerCase().matches("ta")) {
+                    }else if(position.toLowerCase().matches("ta")) {
 
                         // Collections.max adds to TA the max value of ID's in the arrayList
                         TA ta = new TA(firstName, lastName, Collections.max(saveAllIds), phoneNUmber);
@@ -146,11 +133,11 @@ public class MainClass {
 
                         // Total Lines decrease to close loop
                         totalLines--;
-                    }
+                    } else System.out.println("Wrong position. Must be \"teacher, student, or ta\". Try again!");
 
                 } else {
-                    if(!val.isIDValid(studentID)) {System.out.println("Wrong ID. Student ID must be 5 digits or 0, depending in the position. Try again!");}
-                    if(!val.isIDValid(teacherID)) {System.out.println("Wrong ID. Teacher ID must be 5 digits or 0, depending in the position. Try again!");}
+                    if(!val.isIDValid(studentID)) {System.out.println("Wrong ID. Student ID must be 5 digits or 0, depending of the position. Try again!");}
+                    if(!val.isIDValid(teacherID)) {System.out.println("Wrong ID. Teacher ID must be 5 digits or 0, depending of the position. Try again!");}
                     if(!val.isPhoneNumberValid(phoneNUmber)) {System.out.println("Phone Number is not 10 digits. Try again!");}
                 }
 
