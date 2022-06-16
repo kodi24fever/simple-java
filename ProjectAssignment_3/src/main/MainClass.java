@@ -1,5 +1,6 @@
 package main;
 
+import java.io.IOException;
 import java.util.*;
 import util.*;
 
@@ -63,7 +64,7 @@ public class MainClass {
     }
 
 
-    public static void main(String[] args) throws FileNotFoundException{
+    public static void main(String[] args) throws IOException {
 
         // Scanner object
         Scanner userInput = new Scanner(System.in);
