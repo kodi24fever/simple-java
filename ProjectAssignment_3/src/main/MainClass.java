@@ -63,6 +63,9 @@ public class MainClass {
         // Scanner object
         Scanner userInput = new Scanner(System.in);
 
+        //Array list to temporarily store ids to sort them for TA's and get maximum value
+        ArrayList<Integer> saveAllIds = new ArrayList<>();
+
         String splitted[] = {};
         String position = "";
         String firstName = "";
@@ -88,14 +91,14 @@ public class MainClass {
             if(splitted.length != 5){
                 System.out.println("Information is not accurate. Try again!");
                 continue;
+
             }else {
+
                 position = splitted[0];
                 firstName = splitted[1];
                 lastName = splitted[2];
                 ID = Integer.parseInt(splitted[3]);
                 phoneNUmber = Long.parseLong(splitted[4]);
-
-
 
                 // Validate object
                 ValidateInformation val = new ValidateInformation(ID, phoneNUmber);
@@ -106,6 +109,9 @@ public class MainClass {
                         String last4Digits = splitted[4].substring((splitted[4].length() - 4), splitted[4].length());
                         Teacher teacher = new Teacher(firstName,lastName,ID,Integer.parseInt(last4Digits));
 
+                        // Add id to ArrayList
+                        saveAllIds.add(ID);
+
                         // Total Lines decrease to close loop
                         totalLines--;
 
@@ -114,13 +120,18 @@ public class MainClass {
                     if(position.toLowerCase().matches("student")) {
                         Student student = new Student(firstName, lastName, ID, phoneNUmber);
 
+                        // Add id to ArrayList
+                        saveAllIds.add(ID);
+
                         // Total Lines decrease to close loop
                         totalLines--;
 
                     }
 
                     if(position.toLowerCase().matches("ta")) {
-                        TA ta = new TA(firstName, lastName, ID, phoneNUmber);
+
+                        // Collections.max adds to TA the max value of ID's in the arrayList
+                        TA ta = new TA(firstName, lastName, Collections.max(saveAllIds), phoneNUmber);
 
                         // Total Lines decrease to close loop
                         totalLines--;

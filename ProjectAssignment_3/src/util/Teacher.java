@@ -9,8 +9,12 @@ public class Teacher implements CSVPrintable {
 
 
     @Override
-    public String getName() {
-        return null;
+    public String getName(){
+        // Capitalize first and last name
+        String firstName = this.firstName.substring(0, 1).toUpperCase() + this.firstName.substring(1).toLowerCase();
+        String lastName = this.lastName.substring(0, 1).toUpperCase() + this.lastName.substring(1).toLowerCase();
+
+        return firstName + "," + lastName;
     }
 
     @Override
