@@ -1,6 +1,7 @@
 package main;
 
 import java.io.*;
+import java.sql.SQLSyntaxErrorException;
 import java.util.*;
 import util.*;
 
@@ -73,21 +74,27 @@ public class MainClass {
                 System.out.println("Information is not accurate. Try again!");
             }else {
 
+                // Here check if names contains comma if not throw error
                 fullNameWithComma = splitted[1];
-                splitFullName = fullNameWithComma.split(",");
+                if(!fullNameWithComma.contains(",")){
+                    System.out.println("Name is not well formatted. Make sure is Firstname\",\"Lastname with the comma in between and no spaces.");
+                    continue;
+                }else{
+                    splitFullName = fullNameWithComma.split(",");
+                    firstName = splitFullName[0];
+                    lastName = splitFullName[1];
+                }
 
-                // Getting the tokens
+
+                // Getting the tokens. Tokens for firstname and lastname were created before
                 position = splitted[0];
-                firstName = splitFullName[0];
-                lastName = splitFullName[1];
                 studentID = Integer.parseInt(splitted[2]);
                 teacherID = Integer.parseInt(splitted[3]);
                 phoneNUmber = Long.parseLong(splitted[4]);
 
                 // Validate object
                 ValidateInformation val = new ValidateInformation();
-
-
+                
                 if(val.isIDValid(studentID) && val.isIDValid(teacherID) && val.isPhoneNumberValid(phoneNUmber)){
 
                     // Starts command phase
