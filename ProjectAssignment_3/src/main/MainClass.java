@@ -94,7 +94,7 @@ public class MainClass {
 
                 // Validate object
                 ValidateInformation val = new ValidateInformation();
-                
+
                 if(val.isIDValid(studentID) && val.isIDValid(teacherID) && val.isPhoneNumberValid(phoneNUmber)){
 
                     // Starts command phase
