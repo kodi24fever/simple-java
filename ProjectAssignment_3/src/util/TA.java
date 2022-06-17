@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 
 public class TA extends Student{
 
+    private int studentID;
+    private int teacherID;
     private int IDOfTA;
     private long phone;
 
@@ -23,21 +25,37 @@ public class TA extends Student{
 
     @Override
     public int getID() {
+        if(this.studentID > this.teacherID){
+            this.IDOfTA = studentID;
+        }else if(this.teacherID > this.studentID){
+            this.IDOfTA = teacherID;
+        }else if(this.studentID == this.teacherID){
+            this.IDOfTA = this.studentID;
+        }
         return IDOfTA;
     }
 
+    /**
+     * Teacher Alex,Martinez 0 98765 3053489999
+     *     Student Rose,Gonzales 56789 0 9876543210
+     *     TA John,Cruz 88888 99999 1234567890
+     *
+     */
+
+
     @Override
     public void csvPrintln() {
-        out.println(super.getName() + "," + getID() + "." + this.phone);
+        out.println(super.getName() + "," + getID() + "," + this.phone);
 
         out.flush();
         out.close();
     }
 
     // Constructor
-    public TA(String firstName, String lastName, int studentID,long phoneNumber) throws IOException {
+    public TA(String firstName, String lastName, int studentID,int teacherID, long phoneNumber) throws IOException {
         super(firstName, lastName, studentID, phoneNumber);
-        this.IDOfTA = studentID;
+        this.studentID = studentID;
+        this.teacherID = teacherID;
         this.phone = phoneNumber;
     }
 

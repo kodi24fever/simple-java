@@ -79,10 +79,23 @@ public class MainClass {
                 if(!fullNameWithComma.contains(",")){
                     System.out.println("Name is not well formatted. Make sure is Firstname\",\"Lastname with the comma in between and no spaces.");
                     continue;
-                }else{
+                }else {
+                    /**
+                     *  This part validates the firstname and lastname are not numbers
+                     *  just alphabetic letters
+                     */
                     splitFullName = fullNameWithComma.split(",");
-                    firstName = splitFullName[0];
-                    lastName = splitFullName[1];
+                    if(!splitFullName[0].matches("[a-zA-Z.]+")){
+                        System.out.println("Name is not well formatted. Make sure FirstName must be written with alphabetic letters not numbers.");
+                        continue;
+                    }else if(!splitFullName[1].matches("[a-zA-Z.]+")){
+                        System.out.println("Name is not well formatted. Make sure LastName must be written with alphabetic letters not numbers.");
+                        continue;
+                    }else {
+                        // Assigns firstname and lastname to variables if everything is correct
+                        firstName = splitFullName[0];
+                        lastName = splitFullName[1];
+                    }
                 }
 
 
@@ -133,7 +146,7 @@ public class MainClass {
                     }else if(position.toLowerCase().matches("ta")) {
 
                         // Collections.max adds to TA the max value of ID's in the arrayList
-                        TA ta = new TA(firstName, lastName, Collections.max(saveAllIds), phoneNUmber);
+                        TA ta = new TA(firstName, lastName, studentID, teacherID, phoneNUmber);
 
                         //Prints info to csv
                         ta.csvPrintln();
@@ -143,6 +156,7 @@ public class MainClass {
                     } else System.out.println("Wrong position. Must be \"teacher, student, or ta\". Try again!");
 
                 } else {
+                    // General error handling if ids and phone numbers are wrong
                     if(!val.isIDValid(studentID)) {System.out.println("Wrong ID. Student ID must be 5 digits or 0, depending of the position. Try again!");}
                     if(!val.isIDValid(teacherID)) {System.out.println("Wrong ID. Teacher ID must be 5 digits or 0, depending of the position. Try again!");}
                     if(!val.isPhoneNumberValid(phoneNUmber)) {System.out.println("Phone Number is not 10 digits. Try again!");}
