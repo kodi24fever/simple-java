@@ -68,6 +68,7 @@ public class MainClass {
 
         // Welcoming message
         System.out.println("Enter Information in the format \"Position Firstname,Lastname StudentID TeacherID PhoneNumber\"");
+        System.out.println("Example: \"Teacher John,Doe 0 12345 1234567890\"");
         System.out.println("If the position entered is Teacher, StudentID must be 0. If position entered is Student, TeacherID must be 0.");
 
         for(int i = 0; i < inputLines.length; i++){
@@ -98,7 +99,12 @@ public class MainClass {
                      *  just alphabetic letters
                      */
                     splitFullName = fullNameWithComma.split(",");
-                    if(!splitFullName[0].matches("[a-zA-Z.]+")){
+
+                    if(splitFullName.length >= 3){
+                        System.out.println("There is an extra lastName: " + splitFullName[splitFullName.length - 1] + ". Type just one lastName.");
+                        i--;
+                        continue;
+                    }else if(!splitFullName[0].matches("[a-zA-Z.]+")){
                         System.out.println("Name is not well formatted at line " + errorLine + ". Make sure FirstName must be written with alphabetic letters not numbers.");
                         i--;
                         continue;
