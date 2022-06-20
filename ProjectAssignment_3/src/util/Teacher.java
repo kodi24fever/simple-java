@@ -13,8 +13,7 @@ public class Teacher implements CSVPrintable {
     private String lastName;
     private int teacherID;
     private int phoneNUmber;
-
-
+    
     @Override
     public String getName(){
         // Capitalize first and last name
@@ -23,7 +22,6 @@ public class Teacher implements CSVPrintable {
 
         return firstName + "," + lastName;
     }
-
     @Override
     public int getID() {
         return this.teacherID;
