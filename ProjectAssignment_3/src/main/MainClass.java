@@ -71,6 +71,7 @@ public class MainClass {
         System.out.println("Example: \"Teacher John,Doe 0 12345 1234567890\"");
         System.out.println("If the position entered is Teacher, StudentID must be 0. If position entered is Student, TeacherID must be 0.");
 
+        // For loop for checking commands
         for(int i = 0; i < inputLines.length; i++){
             int errorLine = i + 1;
 
