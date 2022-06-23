@@ -7,8 +7,6 @@ public class Main {
     public static final String INPUT = System.getProperty("user.dir") + "/input/";
     public static final String OUTPUT = System.getProperty("user.dir") + "/output/";
 
-
-
     public static void main(String[] args) throws FileNotFoundException {
 
         File file = new File(INPUT + "input.csv");
@@ -47,13 +45,15 @@ public class Main {
                     out.flush();
                 }else{
 
-                    System.out.println("Tabs used");
-                    out.print('\t');
+                    out.print("\t");
                 }
             }
         }
 
         out.close();
         readScn.close();
+
+
+        System.out.printf("%+-10d, %+5.2f, % 5d, %-6.3s, %10.3e", 432, 13.445, 12, "hello world!", -0.000012417);
     }
 }
