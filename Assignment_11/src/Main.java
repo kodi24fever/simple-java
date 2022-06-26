@@ -1,15 +1,11 @@
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.*;
 
-
-
 public class Main {
     public static final String INPUT = System.getProperty("user.dir") + "/input/";
     public static final String OUTPUT = System.getProperty("user.dir") + "/output/";
-
 
 
     public static void main(String[] args) throws FileNotFoundException {

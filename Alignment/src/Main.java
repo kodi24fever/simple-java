@@ -1,8 +1,7 @@
 import java.util.*;
 import java.io.*;
 public class Main {
-    public static void centerAlignTxtFile (String inputFileName, String outputFileName,
-                                         int width, int maxCellLength){
+    public static void centerAlignTxtFile (String inputFileName, String outputFileName, int width, int maxCellLength){
         Scanner s;
         PrintWriter out;
         try{
@@ -37,8 +36,7 @@ public class Main {
         out.close();
         s.close();
     }
-    public static void rightAlignTxtFile (String inputFileName, String outputFileName,
-                                         int width, int maxCellLength){
+    public static void rightAlignTxtFile (String inputFileName, String outputFileName, int width, int maxCellLength){
 
         Scanner s;
         PrintWriter out;
@@ -68,8 +66,7 @@ public class Main {
         out.close();
         s.close();
     }
-    public static void leftAlignTxtFile (String inputFileName, String outputFileName,
-                                           int width, int maxCellLength){
+    public static void leftAlignTxtFile (String inputFileName, String outputFileName, int width, int maxCellLength){
 
         Scanner s;
         PrintWriter out;
