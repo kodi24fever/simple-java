@@ -25,7 +25,6 @@ class Student implements Comparable {
          */
 
         //override compareTo here . . .
-
         //returns zero if it's equal to the input parameter
         //returns a negative number if it's less than the input parameter
         //returns a positive number otherwise
