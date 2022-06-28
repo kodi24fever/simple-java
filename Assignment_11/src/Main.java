@@ -38,18 +38,18 @@ public class Main {
                         out.printf("%10.5s", word);
                     }
                 }
+            }
 
-                System.out.println(counter == 0);
+            System.out.println(counter == 0);
 
-                if(counter == 0){
-                    //if(readScn.hasNextLine())
+            if(counter == 0){
+                if(readScn.hasNextLine())
                     out.println();
-                    //out.flush();
-                }else{
+                out.flush();
+            }else{
 
-                    System.out.println("Tabs used");
-                    out.println('\t');
-                }
+                System.out.println("Tabs used");
+                out.println('\t');
             }
         }
 

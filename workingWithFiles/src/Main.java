@@ -23,10 +23,14 @@ public class Main {
             return;
         }
 
-        // Basic file reading
-        while(readFile.hasNextLine()){
+        readFile.useDelimiter(" ");
 
-            String line = readFile.nextLine();
+        // Basic file reading
+        while(readFile.hasNext()){
+
+            String line = readFile.next();
+
+
 
             System.out.println(line);
         }
