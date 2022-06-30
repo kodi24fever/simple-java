@@ -42,6 +42,20 @@ public class PatternFinder {
 
 	}
 
+	// II. Arithmetic of Order -1 or Miner or Alphabetic Reverse Order Miner
+	private static void arithmeticReverseMiner(String mine, int length) throws ArithmeticReverseException{
+
+		for (int start = 0; start < mine.length() - length; start++) {
+			int i;
+			for (i = start + 1; i < start + length; i++) {
+				if (mine.charAt(i) - mine.charAt(i - 1) != -1)
+					break;
+			}
+			if (i == start + length)
+				throw new ArithmeticReverseException(mine.substring(start, start + length), start);
+		}
+	}
+
 
 
 
@@ -84,7 +98,8 @@ public class PatternFinder {
     	    for (int length = patternMaxLength; length > 0; length--) {
 				//singletonMiner(randomString, length);
 				// Calling rest of patterns
-				arithmeticMiner(randomString,length);
+				//arithmeticMiner(randomString,length);
+				arithmeticReverseMiner(randomString,length);
 			}
 
     	} catch (Exception exp) {
