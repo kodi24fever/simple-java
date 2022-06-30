@@ -7,6 +7,7 @@ public class Main {
     public static final String INPUT = System.getProperty("user.dir") + "/input/";
     public static final String OUTPUT = System.getProperty("user.dir") + "/output/";
 
+
     public static void main(String[] args) throws FileNotFoundException {
 
         File file = new File(INPUT + "input.csv");
@@ -15,8 +16,11 @@ public class Main {
         //printer object
         PrintWriter out = new PrintWriter(OUTPUT + "output.txt");
 
+
         while(readScn.hasNextLine()){
             String wholeInput = readScn.nextLine();
+
+            System.out.println(wholeInput);
 
             String[] split = wholeInput.split(",");
 
@@ -26,34 +30,32 @@ public class Main {
                 counter--;
                 try{
                     int nextInt = Integer.parseInt(word);
-                    out.printf("%+5d", nextInt);
 
+                    out.printf("%+5d", nextInt);
                 }catch (NumberFormatException exp){
                     try{
                         double nextDouble = Double.parseDouble(word);
                         out.printf("%-10.2g", nextDouble);
-
                     }catch (NumberFormatException exp1){
                         out.printf("%10.5s", word);
-
                     }
                 }
+            }
 
-                if(counter == 0){
-                    if(readScn.hasNextLine())
-                        out.println();
-                    out.flush();
-                }else{
+            System.out.println(counter == 0);
 
-                    out.print("\t");
-                }
+            if(counter == 0){
+                if(readScn.hasNextLine())
+                    out.println();
+                out.flush();
+            }else{
+
+                System.out.println("Tabs used");
+                out.println('\t');
             }
         }
 
         out.close();
         readScn.close();
-
-
-        System.out.printf("%+-10d, %+5.2f, % 5d, %-6.3s, %10.3e", 432, 13.445, 12, "hello world!", -0.000012417);
     }
 }
