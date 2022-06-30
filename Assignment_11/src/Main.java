@@ -24,6 +24,8 @@ public class Main {
         while(readScn.hasNextLine()){
             String wholeInput = readScn.nextLine();
 
+            System.out.println(wholeInput);
+
             String[] split = wholeInput.split(",");
 
             int counter = split.length;
