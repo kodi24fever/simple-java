@@ -1,12 +1,2 @@
-     empty	
-      full	
-  +12	
-3.5       	
-4.0e-06   
-     empty	
-      full	
-13        	
-0.20      	
-  +89	
-+100000	
-   +0
+     empty      full  +123.5       4.0e-06   
+     empty      full13        0.20        +89+100000   +0
