@@ -34,7 +34,6 @@ public class PatternFinder {
 	int patternMaxLength = keyboard.nextInt();
 
 	while (true) {
-
 	    try {
 			if (randomStringLength < 100000 || randomStringLength > 1000000000)
 				throw new NumberFormatException();
@@ -43,7 +42,6 @@ public class PatternFinder {
 			randomStringLength = keyboard.nextInt();
 			continue;
 	    }
-
 		try {
 			if(patternMaxLength < 5 || patternMaxLength > 15)
 				throw new NumberFormatException();
@@ -52,11 +50,10 @@ public class PatternFinder {
 			patternMaxLength = keyboard.nextInt();
 			continue;
 		}
-
 	    break;
 	}
 
-	
+
 	//Step 2: generating random string...
 	String randomString = randomStringGenerator(randomStringLength);
 	//Step 3: finding the interesting patterns
