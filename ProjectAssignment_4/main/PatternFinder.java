@@ -29,7 +29,6 @@ public class PatternFinder {
 
 	// II. Arithmetic Miner or Alphabetic Order Miner
 	private static void arithmeticMiner(String mine, int length) throws ArithmeticException{
-
 		for (int start = 0; start < mine.length() - length; start++) {
 			int i;
 			for (i = start + 1; i < start + length; i++) {
@@ -42,9 +41,8 @@ public class PatternFinder {
 
 	}
 
-	// II. Arithmetic of Order -1 or Miner or Alphabetic Reverse Order Miner
+	// III. Arithmetic of Order -1 or Miner or Alphabetic Reverse Order Miner
 	private static void arithmeticReverseMiner(String mine, int length) throws ArithmeticReverseException{
-
 		for (int start = 0; start < mine.length() - length; start++) {
 			int i;
 			for (i = start + 1; i < start + length; i++) {
@@ -56,6 +54,28 @@ public class PatternFinder {
 		}
 	}
 
+	// IV. Balanced Tripartite Miner
+	private static void balancedTripartiteMiner(String mine, int length, int maxLength) throws BalancedTripartiteException{
+
+		int pattern = maxLength / 3;
+
+		for (int start = 0; start < mine.length() - length; start++) {
+			if(maxLength %3 != 0)
+				break;
+			else {
+				int i;
+				for (i = start + 1; i < start + length; i++) {
+					if (mine.charAt(start) != mine.charAt(pattern)){
+						break;
+					}
+				}
+				if (i == start + length)
+					throw new BalancedTripartiteException(mine.substring(start, start + length), start);
+				}
+
+				pattern++;
+			}
+	}
 
 
 
@@ -71,7 +91,7 @@ public class PatternFinder {
 
 	while (true) {
 	    try {
-			if (randomStringLength < 100000 || randomStringLength > 1000000)
+			if (randomStringLength < 1 || randomStringLength > 100)
 				throw new NumberFormatException();
 	    } catch (NumberFormatException e) {
 			System.out.println("Length of random string must be between 100 thousand and 1 billion. Try again!");
@@ -92,6 +112,7 @@ public class PatternFinder {
 
 	//Step 2: generating random string...
 	String randomString = randomStringGenerator(randomStringLength);
+	randomString = "thisisarandomstringbobbobbobendofthestring";
 
 	//Step 3: finding the interesting patterns
     	try {
@@ -99,7 +120,8 @@ public class PatternFinder {
 				//singletonMiner(randomString, length);
 				// Calling rest of patterns
 				//arithmeticMiner(randomString,length);
-				arithmeticReverseMiner(randomString,length);
+				//arithmeticReverseMiner(randomString,length);
+				balancedTripartiteMiner(randomString, length, patternMaxLength);
 			}
 
     	} catch (Exception exp) {
