@@ -56,7 +56,6 @@ public class PatternFinder {
 
 	// IV. Balanced Tripartite Miner
 	private static void balancedTripartiteMiner(String mine, int length, int maxLength) throws BalancedTripartiteException{
-
 		int pattern = maxLength / 3;
 
 		for (int start = 0; start < mine.length() - length; start++) {
@@ -75,6 +74,28 @@ public class PatternFinder {
 
 				pattern++;
 			}
+	}
+
+	// V. Balanced Tripartite Miner
+	private static void balancedBipartiteMiner(String mine, int length, int maxLength) throws BalancedBipartiteException{
+		int pattern = maxLength / 2;
+
+		for (int start = 0; start < mine.length() - length; start++) {
+			if(maxLength % 2 != 0)
+				break;
+			else {
+				int i;
+				for (i = start + 1; i < start + length; i++) {
+					if (mine.charAt(start) != mine.charAt(pattern)){
+						break;
+					}
+				}
+				if (i == start + length)
+					throw new BalancedBipartiteException(mine.substring(start, start + length), start);
+			}
+
+			pattern++;
+		}
 	}
 
 
@@ -121,7 +142,8 @@ public class PatternFinder {
 				// Calling rest of patterns
 				//arithmeticMiner(randomString,length);
 				//arithmeticReverseMiner(randomString,length);
-				balancedTripartiteMiner(randomString, length, patternMaxLength);
+				//balancedTripartiteMiner(randomString, length, patternMaxLength);
+				balancedBipartiteMiner(randomString,length,patternMaxLength);
 			}
 
     	} catch (Exception exp) {
