@@ -38,7 +38,6 @@ public class PatternFinder {
 			if (i == start + length)
 				throw new ArithmeticException(mine.substring(start, start + length), start);
 		}
-
 	}
 
 	// III. Arithmetic of Order -1 or Miner or Alphabetic Reverse Order Miner
@@ -56,23 +55,46 @@ public class PatternFinder {
 
 	// IV. Balanced Tripartite Miner
 	private static void balancedTripartiteMiner(String mine, int length, int maxLength) throws BalancedTripartiteException{
-		int pattern = maxLength / 3;
 
-		for (int start = 0; start < mine.length() - length; start++) {
+
+//		for (int start = 0; start < mine.length() - length; start++) {
+//			int i;
+//			int j;
+//
+//			if((mine.length() & 3) != 0)
+//				break;
+//			else{
+//				for (i = start + length/3, j = start + length * 2/3; i < start + length &&  j < start + length; i++, j++){
+//					if (mine.charAt(i) != mine.charAt(j))
+//						break;
+//				}
+//				if (i == start + length)
+//					throw new BalancedTripartiteException(mine.substring(start, start + length), start);
+//			}
+//		}
+
+
+		for (int start = 1; start < mine.length() - length; start++) {
+
+
+
 			if(maxLength %3 != 0)
 				break;
 			else {
 				int i;
-				for (i = start + 1; i < start + length; i++) {
-					if (mine.charAt(start) != mine.charAt(pattern)){
+				int j;
+				for (i = start - 1, j = i + mine.length()/ 3; i < start + length && j < start + length; i++, j++) {
+
+					System.out.println(j);
+
+
+					if (mine.charAt(start) != mine.charAt(j)){
 						break;
 					}
 				}
 				if (i == start + length)
 					throw new BalancedTripartiteException(mine.substring(start, start + length), start);
 				}
-
-				pattern++;
 			}
 	}
 
@@ -85,7 +107,8 @@ public class PatternFinder {
 				break;
 			else {
 				int i;
-				for (i = start + 1; i < start + length; i++) {
+				int j;
+				for (i = start + length/3, j = start + length * 2/3; i < start + length &&  j < start + length; i++, j++) {
 					if (mine.charAt(start) != mine.charAt(pattern)){
 						break;
 					}
@@ -111,12 +134,9 @@ public class PatternFinder {
 			}
 			if (i == start + length -1)
 				throw new PalindromeException(mine.substring(j + 1, i ), j + 1);
-			
 		}
 
 	}
-
-
 
     public static void main(String[] args) {
 	Scanner keyboard = new Scanner(System.in);
@@ -130,7 +150,7 @@ public class PatternFinder {
 
 	while (true) {
 	    try {
-			if (randomStringLength < 1 || randomStringLength > 100)
+			if (randomStringLength < 100000 || randomStringLength > 1000000000)
 				throw new NumberFormatException();
 	    } catch (NumberFormatException e) {
 			System.out.println("Length of random string must be between 100 thousand and 1 billion. Try again!");
@@ -151,19 +171,19 @@ public class PatternFinder {
 
 	//Step 2: generating random string...
 	String randomString = randomStringGenerator(randomStringLength);
-	randomString = "thsisisarandomstringracecarendofthestring";
+	randomString = "thisisarandomstringbobbobbobendofthestring";
 
 	//Step 3: finding the interesting patterns
     	try {
     	    for (int length = patternMaxLength; length > 0; length--) {
-				//singletonMiner(randomString, length);
-				// Calling rest of patterns
-				//arithmeticMiner(randomString,length);
-				//arithmeticReverseMiner(randomString,length);
-				//balancedTripartiteMiner(randomString, length, patternMaxLength);
+//				singletonMiner(randomString, length);
+//
+//				arithmeticMiner(randomString,length);
+//				arithmeticReverseMiner(randomString,length);
+				balancedTripartiteMiner(randomString, length, patternMaxLength);
 				//balancedBipartiteMiner(randomString,length,patternMaxLength);
 
-				palindromeMiner(randomString,length);
+				//palindromeMiner(randomString,length);
 			}
 
     	} catch (Exception exp) {
