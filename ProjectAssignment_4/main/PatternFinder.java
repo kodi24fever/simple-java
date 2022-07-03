@@ -98,6 +98,24 @@ public class PatternFinder {
 		}
 	}
 
+	// VI. Palindrome Miner
+	private static void palindromeMiner(String mine, int length) throws PalindromeException{
+
+		for (int start = 1; start < mine.length() - length; start++) {
+			int i;
+			int j;
+
+			for (i = start - 1, j = start + 1; j >= 0 &&  i < start + length; i++, j--) {
+				if (mine.charAt(j) != mine.charAt(i))
+					break;
+			}
+			if (i == start + length -1)
+				throw new PalindromeException(mine.substring(j + 1, i ), j + 1);
+			
+		}
+
+	}
+
 
 
     public static void main(String[] args) {
@@ -133,7 +151,7 @@ public class PatternFinder {
 
 	//Step 2: generating random string...
 	String randomString = randomStringGenerator(randomStringLength);
-	randomString = "thisisarandomstringbobbobbobendofthestring";
+	randomString = "thsisisarandomstringracecarendofthestring";
 
 	//Step 3: finding the interesting patterns
     	try {
@@ -143,7 +161,9 @@ public class PatternFinder {
 				//arithmeticMiner(randomString,length);
 				//arithmeticReverseMiner(randomString,length);
 				//balancedTripartiteMiner(randomString, length, patternMaxLength);
-				balancedBipartiteMiner(randomString,length,patternMaxLength);
+				//balancedBipartiteMiner(randomString,length,patternMaxLength);
+
+				palindromeMiner(randomString,length);
 			}
 
     	} catch (Exception exp) {
