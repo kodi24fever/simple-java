@@ -54,70 +54,37 @@ public class PatternFinder {
 	}
 
 	// IV. Balanced Tripartite Miner
-	private static void balancedTripartiteMiner(String mine, int length, int maxLength) throws BalancedTripartiteException{
+	private static void balancedTripartiteMiner(String mine, int length) throws BalancedTripartiteException {
+		for (int start = 0; start < mine.length() - length; start++) {
 
-
-//		for (int start = 0; start < mine.length() - length; start++) {
-//			int i;
-//			int j;
-//
-//			if((mine.length() & 3) != 0)
-//				break;
-//			else{
-//				for (i = start + length/3, j = start + length * 2/3; i < start + length &&  j < start + length; i++, j++){
-//					if (mine.charAt(i) != mine.charAt(j))
-//						break;
-//				}
-//				if (i == start + length)
-//					throw new BalancedTripartiteException(mine.substring(start, start + length), start);
-//			}
-//		}
-
-
-		for (int start = 1; start < mine.length() - length; start++) {
-
-
-
-			if(maxLength %3 != 0)
+			if (length % 3 != 0)
 				break;
 			else {
 				int i;
-				int j;
-				for (i = start - 1, j = i + mine.length()/ 3; i < start + length && j < start + length; i++, j++) {
-
-					System.out.println(j);
-
-
-					if (mine.charAt(start) != mine.charAt(j)){
+				for (i = start + 1; i < start + length; i++) {
+					if (mine.charAt(i - 1) != mine.charAt((i - 1) + length / 3))
 						break;
-					}
 				}
 				if (i == start + length)
 					throw new BalancedTripartiteException(mine.substring(start, start + length), start);
-				}
 			}
+		}
 	}
 
-	// V. Balanced Tripartite Miner
-	private static void balancedBipartiteMiner(String mine, int length, int maxLength) throws BalancedBipartiteException{
-		int pattern = maxLength / 2;
-
+	// V. Balanced Bipartite Miner
+	private static void balancedBipartiteMiner(String mine, int length) throws BalancedBipartiteException{
 		for (int start = 0; start < mine.length() - length; start++) {
-			if(maxLength % 2 != 0)
+			if(length  % 2 != 0)
 				break;
-			else {
+			else{
 				int i;
-				int j;
-				for (i = start + length/3, j = start + length * 2/3; i < start + length &&  j < start + length; i++, j++) {
-					if (mine.charAt(start) != mine.charAt(pattern)){
+				for (i = start + 1; i < start + length; i++) {
+					if (mine.charAt(i - 1) != mine.charAt((i - 1) + length/2))
 						break;
-					}
 				}
 				if (i == start + length)
 					throw new BalancedBipartiteException(mine.substring(start, start + length), start);
 			}
-
-			pattern++;
 		}
 	}
 
@@ -168,22 +135,18 @@ public class PatternFinder {
 	    break;
 	}
 
-
 	//Step 2: generating random string...
 	String randomString = randomStringGenerator(randomStringLength);
-	randomString = "thisisarandomstringbobbobbobendofthestring";
 
 	//Step 3: finding the interesting patterns
     	try {
     	    for (int length = patternMaxLength; length > 0; length--) {
-//				singletonMiner(randomString, length);
-//
-//				arithmeticMiner(randomString,length);
-//				arithmeticReverseMiner(randomString,length);
-				balancedTripartiteMiner(randomString, length, patternMaxLength);
-				//balancedBipartiteMiner(randomString,length,patternMaxLength);
-
-				//palindromeMiner(randomString,length);
+				singletonMiner(randomString, length);
+				arithmeticMiner(randomString,length);
+				arithmeticReverseMiner(randomString,length);
+				balancedTripartiteMiner(randomString, length);
+				balancedBipartiteMiner(randomString,length);
+				palindromeMiner(randomString,length);
 			}
 
     	} catch (Exception exp) {
