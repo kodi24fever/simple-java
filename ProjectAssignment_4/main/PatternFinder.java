@@ -148,7 +148,6 @@ public class PatternFinder {
 				balancedBipartiteMiner(randomString,length);
 				palindromeMiner(randomString,length);
 			}
-
     	} catch (Exception exp) {
     	    System.out.println(exp.getMessage());
     	}
