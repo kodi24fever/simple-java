@@ -62,7 +62,7 @@ public class PatternFinder {
 			else {
 				int i;
 				for (i = start + 1; i < start + length; i++) {
-					if (mine.charAt(i - 1) != mine.charAt((i - 1) + length / 3))
+					if ((mine.charAt(i - 1) != mine.charAt((i - 1) + length / 3)) && (mine.charAt((i - 1) + length / 3) != mine.charAt((i - 1) + 2 / 3 * length)))
 						break;
 				}
 				if (i == start + length)
@@ -99,7 +99,7 @@ public class PatternFinder {
 				if (mine.charAt(j) != mine.charAt(i))
 					break;
 			}
-			if (i == start + length -1)
+			if (i == start + length)
 				throw new PalindromeException(mine.substring(j + 1, i ), j + 1);
 		}
 
