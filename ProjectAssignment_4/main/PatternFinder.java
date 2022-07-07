@@ -91,17 +91,36 @@ public class PatternFinder {
 	// VI. Palindrome Miner
 	private static void palindromeMiner(String mine, int length) throws PalindromeException{
 
+
+		int count = 0;
 		for (int start = 1; start < mine.length() - length; start++) {
 			int i;
 			int j;
 
-			for (i = start - 1, j = start + 1; j >= 0 &&  i < start + length; i++, j--) {
-				if (mine.charAt(j) != mine.charAt(i))
+			for (i = start - 1, j = start + 1; j >= 0 &&  i < start + length; i++, j--){
+
+				System.out.println("This is i " + i);
+				System.out.println("This is j " + j);
+
+				System.out.println("This is char at i " + mine.charAt(i));
+				System.out.println("This is char at j " + mine.charAt(j));
+
+
+				if (mine.charAt(j) != mine.charAt(i)){
+					System.out.println("Broke");
 					break;
+
+				}
 			}
 			if (i == start + length)
 				throw new PalindromeException(mine.substring(j + 1, i ), j + 1);
+
+			count++;
 		}
+
+
+
+		System.out.println("This is count " + count);
 
 	}
 
@@ -138,14 +157,16 @@ public class PatternFinder {
 	//Step 2: generating random string...
 	String randomString = randomStringGenerator(randomStringLength);
 
+	randomString = "jdracecarks";
+
 	//Step 3: finding the interesting patterns
     	try {
     	    for (int length = patternMaxLength; length > 0; length--) {
-				singletonMiner(randomString, length);
-				arithmeticMiner(randomString,length);
-				arithmeticReverseMiner(randomString,length);
-				balancedTripartiteMiner(randomString, length);
-				balancedBipartiteMiner(randomString,length);
+//				singletonMiner(randomString, length);
+//				arithmeticMiner(randomString,length);
+//				arithmeticReverseMiner(randomString,length);
+//				balancedTripartiteMiner(randomString, length);
+//				balancedBipartiteMiner(randomString,length);
 				palindromeMiner(randomString,length);
 			}
     	} catch (Exception exp) {
