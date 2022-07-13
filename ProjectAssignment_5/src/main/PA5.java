@@ -76,7 +76,6 @@ public class PA5 {
                }
 
             }else {//csv->txt
-                //complete here
                 while(in.hasNextLine()){
 
                     String[] cells = in.nextLine().split(",");
@@ -107,13 +106,13 @@ public class PA5 {
 
         String delimiter = fileName.endsWith("txt")?"\t": ",";
         ArrayList<String>content = new ArrayList<String>();
-        Scanner in = new Scanner(new File(fileName));
+        Scanner in = new Scanner(new File(INPUT + fileName));
 
         while(in.hasNextLine())
             content.add(in.nextLine());
         in.close();
 
-        PrintWriter out = new PrintWriter(fileName);
+        PrintWriter out = new PrintWriter(INPUT + fileName);
 
         int rows = content.size();
 
@@ -121,11 +120,42 @@ public class PA5 {
             String[] cells = line.split(delimiter);
             int cols = cells.length;
             for(String cell: cells){
-                //work on th next few lines...
-                //process each cell
-                //and print it using printf
+
                 cols--;
-                out.print(cell);
+
+                try{
+                    int cellHasInt = Integer.parseInt(cell);
+
+                    if(cell.length() < 10)
+                        out.printf("%+010d", cellHasInt);
+                    else
+                        out.printf("%+d", cellHasInt);
+                }catch (Exception exp){
+                    try{
+                        double cellHasDouble = Double.parseDouble(cell);
+                        if(cellHasDouble > 100 || cellHasDouble < 0.01)
+                            out.printf("%.2e", cellHasDouble);
+                        else
+                            out.printf("%.2f", cellHasDouble);
+                    }catch (Exception exp1){
+                        try {
+                            float cellHasFloat = Float.parseFloat(cell);
+                            if (cellHasFloat > 100 || cellHasFloat < 0.01)
+                                out.printf("%.2e", cellHasFloat);
+                            else
+                                out.printf("%.2f", cellHasFloat);
+                        }catch (Exception exp3){
+                            if(cell == "")
+                                out.print("N/A");
+                            else if(cell.length() > 13)
+                                out.printf("%.10s...", cell);
+                            else
+                                out.print(cell);
+                        }
+                    }
+                }
+
+
                 if(cols != 0)
                     out.print(delimiter);
             }
@@ -173,9 +203,9 @@ public class PA5 {
                             " Please try again!");
                     continue;
                 }
-                System.out.println("normalizing " + words[1]);
                 try{
                     normalize(words[1]);
+                    System.out.println("normalizing " + words[1]);
                 }catch(Exception exp){
                     System.out.println("Error: normalize failed! " +
                             "Something is wrong w/ the format of the input file!" +
