@@ -43,7 +43,18 @@ public class PA5 {
                 //complete here
                 if(srcExt.equals("csv")) {
                     while(in.hasNextLine()){
-
+                        String[] cells = in.nextLine().split(",");
+                        for(int i = 0; i < cells.length;i++) {
+                            String seperator = ",";
+                            if(i == cells.length - 1){
+                                if(in.hasNextLine())
+                                    seperator = "\n";
+                                else
+                                    seperator = "\t";
+                            }
+                            out.print(cells[i] + seperator);
+                        }
+                        out.flush();
                     }
 
                 }
