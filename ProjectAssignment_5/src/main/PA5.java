@@ -2,21 +2,28 @@ package main;
 
 import java.util.*;
 import java.io.*;
+
 public class PA5 {
     private static final String INPUT = System.getProperty("user.dir")+"/input/";
     private static final String OUTPUT = System.getProperty("user.dir")+"/output/";
+
     public static void convert(String src, String trg) throws Exception {
+
         String srcExt = src.substring(src.length()-3);
         String trgExt = trg.substring(trg.length()-3);
+
         if(!srcExt.equals("txt") && !srcExt.equals("csv"))
             throw new Exception("bad format");
         if(!trgExt.equals("txt") && !trgExt.equals("csv"))
             throw new Exception("bad format");
         if(src.equals(trg))
             throw new Exception("same i/o");
-        Scanner in = new Scanner(new File(src));
-        PrintWriter out = new PrintWriter(trg);
+
+        Scanner in = new Scanner(new File(INPUT + src));
+        PrintWriter out = new PrintWriter(OUTPUT + trg);
+
         if(srcExt.equals(trgExt)) {//same formats
+
             if(srcExt.equals("txt")) {//txt->txt
                 while(in.hasNextLine()) {
                     String[] cells = in.nextLine().split("\t");
@@ -34,6 +41,12 @@ public class PA5 {
                 }
             }else {//csv->csv
                 //complete here
+                if(srcExt.equals("csv")) {
+                    while(in.hasNextLine()){
+
+                    }
+
+                }
             }
         }else {
             if(srcExt.equals("txt")) {//txt->csv
@@ -46,14 +59,19 @@ public class PA5 {
         in.close();
     }
     public static void normalize(String fileName) throws Exception{
+
         String delimiter = fileName.endsWith("txt")?"\t": ",";
         ArrayList<String>content = new ArrayList<String>();
         Scanner in = new Scanner(new File(fileName));
+
         while(in.hasNextLine())
             content.add(in.nextLine());
         in.close();
+
         PrintWriter out = new PrintWriter(fileName);
+
         int rows = content.size();
+
         for(String line: content) {
             String[] cells = line.split(delimiter);
             int cols = cells.length;
@@ -74,8 +92,6 @@ public class PA5 {
     }
 
 
-
-
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
         while(true){
@@ -94,14 +110,15 @@ public class PA5 {
                             " Please try again!");
                     continue;
                 }
-                System.out.println("converting " + words[1] + " to " + words[2]);
+
                 try{
                     convert(words[1], words[2]);
+                    System.out.println("converting " + words[1] + " to " + words[2]);
                 }catch(Exception exp){
                     System.out.println("Error: conversion failed! " +
                             "Something is wrong w/ the format of the input file!" +
-                            "Details: " + exp.getMessage() +
-                            "Please enter a new command: ");
+                            " Details: " + exp.getMessage() +
+                            " Please enter a new command: ");
                 }
             }else if(words[0].equals("normalize")){
                 if(words.length != 2 ||
@@ -118,7 +135,7 @@ public class PA5 {
                     System.out.println("Error: normalize failed! " +
                             "Something is wrong w/ the format of the input file!" +
                             "Details: " + exp.getMessage() +
-                            "Please enter a new command: ");
+                            " Please enter a new command: ");
                 }
             }
             else{
@@ -126,13 +143,6 @@ public class PA5 {
                         "Please try again!");
             }
         }
-
-
-
-
-
-
     }
-
 }
 
