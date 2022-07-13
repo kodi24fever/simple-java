@@ -40,7 +40,6 @@ public class PA5 {
                     out.flush();
                 }
             }else {//csv->csv
-                //complete here
                 if(srcExt.equals("csv")) {
                     while(in.hasNextLine()){
                         String[] cells = in.nextLine().split(",");
@@ -50,20 +49,55 @@ public class PA5 {
                                 if(in.hasNextLine())
                                     seperator = "\n";
                                 else
-                                    seperator = "\t";
+                                    seperator = "";
                             }
                             out.print(cells[i] + seperator);
                         }
                         out.flush();
                     }
-
                 }
             }
         }else {
             if(srcExt.equals("txt")) {//txt->csv
                 //complete here
+               while(in.hasNextLine()){
+                   String[] cells = in.nextLine().split("\t");
+                   for(int i = 0; i < cells.length;i++) {
+                       String seperator = ",";
+                       if(i == cells.length - 1){
+                           if(in.hasNextLine())
+                               seperator = "\n";
+                           else
+                               seperator = "";
+                       }
+                       out.print(cells[i] + seperator);
+                   }
+                   out.flush();
+               }
+
             }else {//csv->txt
                 //complete here
+                while(in.hasNextLine()){
+
+                    String[] cells = in.nextLine().split(",");
+                    for(int i = 0; i < cells.length;i++) {
+                        String seperator = "\t";
+
+                        if(cells[i].startsWith("\"")){
+                            int nextIndex = i + 1;
+                            if(nextIndex < cells.length && cells[nextIndex].endsWith("\""))
+                                seperator = ",";
+                        }
+                        if(i == cells.length - 1){
+                            if(in.hasNextLine())
+                                seperator = "\n";
+                            else
+                                seperator = "";
+                        }
+                        out.print(cells[i] + seperator);
+                    }
+                    out.flush();
+                }
             }
         }
         out.close();
