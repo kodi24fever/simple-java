@@ -125,7 +125,6 @@ public class PA5 {
 
                 try{
                     int cellHasInt = Integer.parseInt(cell);
-
                     if(cell.length() < 10)
                         out.printf("%+010d", cellHasInt);
                     else
@@ -154,7 +153,6 @@ public class PA5 {
                         }
                     }
                 }
-
 
                 if(cols != 0)
                     out.print(delimiter);
