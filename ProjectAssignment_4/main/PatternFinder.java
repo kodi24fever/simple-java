@@ -32,12 +32,16 @@ public class PatternFinder {
 	private static void arithmeticMiner(String mine, int length) throws ArithmeticException{
 		for (int start = 0; start < mine.length() - length; start++) {
 			int i;
+			int count = 0;
+
 			for (i = start + 1; i < start + length; i++) {
 				if (mine.charAt(i) - mine.charAt(i - 1) != 1)
 					break;
+
 			}
 			if (i == start + length)
 				throw new ArithmeticException(mine.substring(start, start + length), start);
+
 		}
 	}
 
@@ -124,11 +128,11 @@ public class PatternFinder {
 	// VI. Palindrome Miner
 	private static void palindromeMiner(String mine, int length) throws PalindromeException{
 
-		for (int start = 1; start < mine.length() - length; start++) {
+		for (int start = 0; start < mine.length() - length; start++) {
 			int i;
 			int j;
 
-			for (i = start - 1, j = start + 1; j >= 0 &&  i < start + length; i++, j--){
+			for (i = start, j = mine.length() - 1; j >= 0 &&  i < start + length; i++, j--){
 
 //				System.out.println("This is i " + i);
 //				System.out.println("This is j " + j);
@@ -138,19 +142,13 @@ public class PatternFinder {
 
 
 				if (mine.charAt(j) != mine.charAt(i)){
-					//System.out.println("Broke");
 					break;
-
 				}
 			}
+
 			if (i == start + length)
-				throw new PalindromeException(mine.substring(j + 1, i ), j + 1);
+				throw new PalindromeException(mine.substring(j, i + 1), j);
 		}
-
-
-
-		//System.out.println("This is count " + count);
-
 	}
 
     public static void main(String[] args) {
