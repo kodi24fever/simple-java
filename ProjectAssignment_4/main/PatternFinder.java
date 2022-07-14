@@ -19,7 +19,6 @@ public class PatternFinder {
 		for (int start = 0; start < mine.length() - length; start++) {
 			int i;
 			for (i = start + 1; i < start + length; i++) {
-
 				if (mine.charAt(i) != mine.charAt(i - 1))
 					break;
 			}
@@ -32,16 +31,12 @@ public class PatternFinder {
 	private static void arithmeticMiner(String mine, int length) throws ArithmeticException{
 		for (int start = 0; start < mine.length() - length; start++) {
 			int i;
-			int count = 0;
-
 			for (i = start + 1; i < start + length; i++) {
 				if (mine.charAt(i) - mine.charAt(i - 1) != 1)
 					break;
-
 			}
 			if (i == start + length)
 				throw new ArithmeticException(mine.substring(start, start + length), start);
-
 		}
 	}
 
@@ -62,37 +57,16 @@ public class PatternFinder {
 	private static void balancedTripartiteMiner(String mine, int length) throws BalancedTripartiteException {
 		for (int start = 0; start < mine.length() - length; start++) {
 
-
 			if (length % 3 != 0)
 				break;
 			else {
 				int i;
-				int secondIndex;
-				int thirdIndex;
-				int count = 0;
-
-
-				for (i = start; i < start + length; i++) {
-					secondIndex = i + length/3;
-					thirdIndex = i + length * 2/ 3;
-
-//					System.out.println("This is length " + length);
-//
-//					System.out.print("First Index at " + (i));
-//					System.out.print("    Second Index at " + (i + length/3));
-//					System.out.print("    Third Index at " + thirdIndex);
-//
-//					System.out.print("    First Char at " + mine.charAt(i));
-//					System.out.print("    Second Char at " + mine.charAt(secondIndex));
-//					System.out.print("    Third Char at " + mine.charAt(thirdIndex) + "\n");
-
-					if (mine.charAt(i) != mine.charAt(secondIndex) || mine.charAt(i) != mine.charAt(secondIndex))
+				for (i = start + 1; i < start + length; i++) {
+					if ((mine.charAt(i - 1) != mine.charAt((i - 1) + length / 3)) && (mine.charAt((i - 1) + length / 3) != mine.charAt((i - 1) + 2 / 3 * length)))
 						break;
-
-					if(count == length/3)
-						throw new BalancedTripartiteException(mine.substring(i - count, thirdIndex), i - count);
-					count++;
 				}
+				if (i == start + length)
+					throw new BalancedTripartiteException(mine.substring(start, start + length), start);
 			}
 		}
 	}
@@ -100,27 +74,16 @@ public class PatternFinder {
 	// V. Balanced Bipartite Miner
 	private static void balancedBipartiteMiner(String mine, int length) throws BalancedBipartiteException{
 		for (int start = 0; start < mine.length() - length; start++) {
-
-
 			if(length  % 2 != 0)
 				break;
 			else{
 				int i;
-				int secondIndex;
-				int count = 0;
-
-				for (i = start; i < start + length; i++) {
-					secondIndex = i + length/2;
-
-					if (mine.charAt(i) != mine.charAt(secondIndex))
+				for (i = start + 1; i < start + length; i++) {
+					if (mine.charAt(i - 1) != mine.charAt((i - 1) + length/2))
 						break;
-
-					count++;
-
-					if(count == length / 2){
-						throw new BalancedBipartiteException(mine.substring(start, start + length), start);
-					}
 				}
+				if (i == start + length)
+					throw new BalancedBipartiteException(mine.substring(start, start + length), start);
 			}
 		}
 	}
@@ -128,27 +91,37 @@ public class PatternFinder {
 	// VI. Palindrome Miner
 	private static void palindromeMiner(String mine, int length) throws PalindromeException{
 
-		for (int start = 0; start < mine.length() - length; start++) {
+
+		int count = 0;
+		for (int start = 1; start < mine.length() - length; start++) {
 			int i;
 			int j;
 
-			for (i = start, j = mine.length() - 1; j >= 0 &&  i < start + length; i++, j--){
+			for (i = start - 1, j = start + 1; j >= 0 &&  i < start + length; i++, j--){
 
-//				System.out.println("This is i " + i);
-//				System.out.println("This is j " + j);
-//
-//				System.out.println("This is char at i " + mine.charAt(i));
-//				System.out.println("This is char at j " + mine.charAt(j));
+				System.out.println("This is i " + i);
+				System.out.println("This is j " + j);
+
+				System.out.println("This is char at i " + mine.charAt(i));
+				System.out.println("This is char at j " + mine.charAt(j));
 
 
 				if (mine.charAt(j) != mine.charAt(i)){
+					System.out.println("Broke");
 					break;
+
 				}
 			}
-
 			if (i == start + length)
-				throw new PalindromeException(mine.substring(j, i + 1), j);
+				throw new PalindromeException(mine.substring(j + 1, i ), j + 1);
+
+			count++;
 		}
+
+
+
+		System.out.println("This is count " + count);
+
 	}
 
     public static void main(String[] args) {
@@ -184,16 +157,13 @@ public class PatternFinder {
 	//Step 2: generating random string...
 	String randomString = randomStringGenerator(randomStringLength);
 
-	//randomString = "Skaoabusabusabusapswo";
-	//randomString = "pqopaticktickaawddos";
-	randomString = "abcba";
-
+	randomString = "jdracecarks";
 
 	//Step 3: finding the interesting patterns
     	try {
     	    for (int length = patternMaxLength; length > 0; length--) {
 //				singletonMiner(randomString, length);
-				arithmeticMiner(randomString,length);
+//				arithmeticMiner(randomString,length);
 //				arithmeticReverseMiner(randomString,length);
 //				balancedTripartiteMiner(randomString, length);
 //				balancedBipartiteMiner(randomString,length);
