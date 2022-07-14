@@ -19,6 +19,7 @@ public class PatternFinder {
 		for (int start = 0; start < mine.length() - length; start++) {
 			int i;
 			for (i = start + 1; i < start + length; i++) {
+
 				if (mine.charAt(i) != mine.charAt(i - 1))
 					break;
 			}
@@ -95,16 +96,27 @@ public class PatternFinder {
 	// V. Balanced Bipartite Miner
 	private static void balancedBipartiteMiner(String mine, int length) throws BalancedBipartiteException{
 		for (int start = 0; start < mine.length() - length; start++) {
+
+
 			if(length  % 2 != 0)
 				break;
 			else{
 				int i;
-				for (i = start + 1; i < start + length; i++) {
-					if (mine.charAt(i - 1) != mine.charAt((i - 1) + length/2))
+				int secondIndex;
+				int count = 0;
+
+				for (i = start; i < start + length; i++) {
+					secondIndex = i + length/2;
+
+					if (mine.charAt(i) != mine.charAt(secondIndex))
 						break;
+
+					count++;
+
+					if(count == length / 2){
+						throw new BalancedBipartiteException(mine.substring(start, start + length), start);
+					}
 				}
-				if (i == start + length)
-					throw new BalancedBipartiteException(mine.substring(start, start + length), start);
 			}
 		}
 	}
@@ -112,8 +124,6 @@ public class PatternFinder {
 	// VI. Palindrome Miner
 	private static void palindromeMiner(String mine, int length) throws PalindromeException{
 
-
-		int count = 0;
 		for (int start = 1; start < mine.length() - length; start++) {
 			int i;
 			int j;
@@ -135,8 +145,6 @@ public class PatternFinder {
 			}
 			if (i == start + length)
 				throw new PalindromeException(mine.substring(j + 1, i ), j + 1);
-
-			count++;
 		}
 
 
@@ -178,16 +186,19 @@ public class PatternFinder {
 	//Step 2: generating random string...
 	String randomString = randomStringGenerator(randomStringLength);
 
-	randomString = "Skaoabusabusabusapswo";
+	//randomString = "Skaoabusabusabusapswo";
+	//randomString = "pqopaticktickaawddos";
+	randomString = "abcba";
+
 
 	//Step 3: finding the interesting patterns
     	try {
     	    for (int length = patternMaxLength; length > 0; length--) {
-				singletonMiner(randomString, length);
+//				singletonMiner(randomString, length);
 				arithmeticMiner(randomString,length);
-				arithmeticReverseMiner(randomString,length);
-				balancedTripartiteMiner(randomString, length);
-				balancedBipartiteMiner(randomString,length);
+//				arithmeticReverseMiner(randomString,length);
+//				balancedTripartiteMiner(randomString, length);
+//				balancedBipartiteMiner(randomString,length);
 				palindromeMiner(randomString,length);
 			}
     	} catch (Exception exp) {
