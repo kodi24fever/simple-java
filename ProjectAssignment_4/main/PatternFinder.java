@@ -89,6 +89,8 @@ public class PatternFinder {
 					if (mine.charAt(i) != mine.charAt(secondIndex) || mine.charAt(i) != mine.charAt(secondIndex))
 						break;
 
+
+
 					if(count == length/3)
 						throw new BalancedTripartiteException(mine.substring(i - count, thirdIndex), i - count);
 					count++;
@@ -120,6 +122,7 @@ public class PatternFinder {
 					if(count == length / 2){
 						throw new BalancedBipartiteException(mine.substring(start, start + length), start);
 					}
+
 				}
 			}
 		}
@@ -184,19 +187,19 @@ public class PatternFinder {
 	//Step 2: generating random string...
 	String randomString = randomStringGenerator(randomStringLength);
 
-	//randomString = "Skaoabusabusabusapswo";
-	//randomString = "pqopaticktickaawddos";
-	randomString = "abcba";
+	randomString = "Skaoabusabusabusapswo";
+	//randomString = "pqopaticticaawddos";
+	//randomString = "abcba";
 
 
 	//Step 3: finding the interesting patterns
     	try {
     	    for (int length = patternMaxLength; length > 0; length--) {
-//				singletonMiner(randomString, length);
+				singletonMiner(randomString, length);
 				arithmeticMiner(randomString,length);
-//				arithmeticReverseMiner(randomString,length);
-//				balancedTripartiteMiner(randomString, length);
-//				balancedBipartiteMiner(randomString,length);
+				arithmeticReverseMiner(randomString,length);
+				balancedTripartiteMiner(randomString, length);
+				balancedBipartiteMiner(randomString,length);
 				palindromeMiner(randomString,length);
 			}
     	} catch (Exception exp) {

@@ -24,7 +24,7 @@ public class PA5 {
 
         if(srcExt.equals(trgExt)) {//same formats
 
-            if(srcExt.equals("txt")) {//txt->txt
+            if(srcExt.equals("txt")) {//txt->txt //It is good
                 while(in.hasNextLine()) {
                     String[] cells = in.nextLine().split("\t");
                     for(int i = 0; i < cells.length;i++) {
@@ -39,7 +39,7 @@ public class PA5 {
                     }
                     out.flush();
                 }
-            }else {//csv->csv
+            }else {//csv->csv It is good
                 if(srcExt.equals("csv")) {
                     while(in.hasNextLine()){
                         String[] cells = in.nextLine().split(",");
@@ -58,24 +58,26 @@ public class PA5 {
                 }
             }
         }else {
-            if(srcExt.equals("txt")) {//txt->csv
+            if(srcExt.equals("txt")) {//txt->csv It is good
                 //complete here
                while(in.hasNextLine()){
-                   String[] cells = in.nextLine().split("\t");
+                   String[] cells = in.nextLine().split("\t" );
+
                    for(int i = 0; i < cells.length;i++) {
-                       String seperator = ",";
+                       String separator = ",";
+
                        if(i == cells.length - 1){
                            if(in.hasNextLine())
-                               seperator = "\n";
+                               separator = "\n";
                            else
-                               seperator = "";
+                               separator = "";
                        }
-                       out.print(cells[i] + seperator);
+                       out.print(cells[i] + separator);
                    }
                    out.flush();
                }
 
-            }else {//csv->txt
+            }else {//csv->txt It is good
                 while(in.hasNextLine()){
 
                     String[] cells = in.nextLine().split(",");
@@ -87,6 +89,8 @@ public class PA5 {
                             if(nextIndex < cells.length && cells[nextIndex].endsWith("\""))
                                 seperator = ",";
                         }
+
+
                         if(i == cells.length - 1){
                             if(in.hasNextLine())
                                 seperator = "\n";
