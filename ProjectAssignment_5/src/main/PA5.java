@@ -6,7 +6,6 @@ import java.io.*;
 public class PA5 {
     private static final String INPUT = System.getProperty("user.dir")+"/input/";
     private static final String OUTPUT = System.getProperty("user.dir")+"/output/";
-
     public static void convert(String src, String trg) throws Exception {
 
         String srcExt = src.substring(src.length()-3);
