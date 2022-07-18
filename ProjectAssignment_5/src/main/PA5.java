@@ -167,8 +167,6 @@ public class PA5 {
         }
         out.close();
     }
-
-
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
         while(true){
