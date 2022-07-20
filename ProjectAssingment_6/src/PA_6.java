@@ -13,6 +13,17 @@ public class PA_6 {
 
         return prev - val;
     }
+
+    private static int getPrecedence(char sign){
+        if(sign == '+' || sign == '-'){
+            return 1;
+        }
+        else if(sign == '(' || sign == ')'){
+            return 2;
+        }
+        return -1;
+    }
+
     public static void main(String args[]) throws Exception{
 
         Scanner s = new Scanner(System.in);
@@ -34,17 +45,6 @@ public class PA_6 {
 
             for(int cur = 0; cur < exp.length();cur++){
 
-//               if(exp.charAt(cur) == '(') {
-//                   operands.push(exp.charAt(cur));
-//               }
-//               else if(exp.charAt(cur) == ')'){
-//
-//
-//                   while(operands.peek() != '('){
-//
-//                   }
-//
-//               }
                if (Character.isDigit(exp.charAt(cur))){
 
                     temp = getOp(exp, cur);
@@ -56,20 +56,50 @@ public class PA_6 {
 
                 }
                else if(exp.charAt(cur) == '+' || exp.charAt(cur) == '-' || exp.charAt(cur) == '(' || exp.charAt(cur) == ')') {
+                   spot = exp.charAt(cur);
 
-                   operands.push(exp.charAt(cur));
-                   numbers.push(temp);
-                   temp = 0;
-
-                   //System.out.println("THis is cur " + cur + " This is length " + exp.length() );
-
-                   if(numbers.size() > 1){
-                       int val = numbers.pop();
-                       int prev = numbers.pop();
-                       spot = operands.pop();
-                       temp = calculate(prev,val,spot);
+                   if(spot == '('){
+                       operands.push(spot);
+                   }
+                   else if(numbers.isEmpty()){
                        numbers.push(temp);
+                       operands.push(spot);
                        temp = 0;
+                   }
+
+                   else if(spot == ')'){
+                       numbers.push(temp);
+                       while(operands.peek() != '('){
+                           int val = numbers.pop();
+                           int prev = numbers.pop();
+                           spot = operands.pop();
+                           temp = calculate(prev,val,spot);
+                           numbers.push(temp);
+                       }
+                       operands.pop();
+                       numbers.pop();
+                   }
+
+                   else{
+                       char prevChar = operands.peek();
+                       if(getPrecedence(spot) > getPrecedence(prevChar)){
+                           numbers.push(temp);
+                           operands.push(spot);
+                           temp = 0;
+                       }
+                       else if(getPrecedence(spot) < getPrecedence(prevChar)){
+                           numbers.push(temp);
+                           operands.push(spot);
+                           temp = 0;
+                       }
+                       else{ // this case precedence is == for both operands
+                           int prevNumb = numbers.pop();
+                           char prev = operands.pop();
+                           prevNumb = calculate(prevNumb,temp,prev);
+                           numbers.push(prevNumb);
+                           operands.push(spot);
+                           temp = 0;
+                       }
                    }
                }
 
@@ -80,27 +110,53 @@ public class PA_6 {
             }
 
 
-
-            // Adding the rest of the stack until no more operands
-            while(!operands.isEmpty()){
-                int prev = numbers.pop();
-                spot = operands.pop();
-
-                result = calculate(prev,temp,spot);
+            if(operands.isEmpty() && numbers.isEmpty()){// Very rare case that both stacks are empty. Tough it could happen.
+                result = temp;
+            }else {
+                while(!operands.isEmpty()){
+                    if(numbers.isEmpty()){
+                        result = temp;
+                        break;
+                    }
+                    else {
+                        int prev = numbers.pop();
+                        spot = operands.pop();
+                        if (operands.size() == 1 && spot == ')' && operands.peek() == '(') {
+                            result = prev;
+                            break;
+                        } else if (spot == '+') {
+                            result = temp * 1;
+                        } else if (spot == '-') {
+                            result = temp * -1;
+                        } else {
+                            result = prev;
+                            break;
+                        }
+                        result = calculate(prev,temp,spot);
+                    }
+                }
             }
-
-
-//            numbers.forEach(number  -> {
-//                System.out.println("Number " + number);
-//            });
-//
-//
-//            operands.forEach(sum  -> {
-//                System.out.println("Operand " + sum);
-//            });
-
 
             System.out.println("The result is " + result);
         }
     }
 }
+
+
+/**
+ *  TESTS I HAVE TRIED AND WORK
+ *  -0021 good output -21
+ *  0021  good output  21
+ *  ((2)) good  output: 2
+ *  ((-2)) good output: -2
+ *  -(2-3-4)    output: 5 good
+ *  (+34) good  output: 34
+ *  (-34) good  output: -34
+ *
+ *  2+(1-(3+((4-1)+(12-6)))) output: -9 good
+ *
+ *  1+(2-(3+4-(5+(6-(7+(8-9)))))) output: 1 good
+ *
+ *
+ *
+ */
