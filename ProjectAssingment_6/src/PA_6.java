@@ -7,14 +7,16 @@ public class PA_6 {
         s.useDelimiter("[^0-9]");
         return s.nextInt();
     }
-    private static int calculate(int prev, int val, char operand){
+    private static int calculate(int prev, int val, char operand){ // Calculations for sum and subs
         if(operand == '+')
             return prev + val;
 
         return prev - val;
     }
 
-    private static int getPrecedence(char sign){
+    private static int getPrecedence(char sign) { // Precedence for operations () ---> 2, +- ---> 1, return -1 if nothing is valid
+
+        // In case of adding multiplication and division it should be added here
         if(sign == '+' || sign == '-'){
             return 1;
         }
@@ -55,7 +57,8 @@ public class PA_6 {
                     cur--;
 
                 }
-               else if(exp.charAt(cur) == '+' || exp.charAt(cur) == '-' || exp.charAt(cur) == '(' || exp.charAt(cur) == ')') {
+
+               else if(exp.charAt(cur) == '+' || exp.charAt(cur) == '-' || exp.charAt(cur) == '(' || exp.charAt(cur) == ')') {// Validates the values of the characters
                    spot = exp.charAt(cur);
 
                    if(spot == '('){
@@ -142,7 +145,6 @@ public class PA_6 {
     }
 }
 
-
 /**
  *  TESTS I HAVE TRIED AND WORK
  *  -0021 good output -21
@@ -157,6 +159,6 @@ public class PA_6 {
  *
  *  1+(2-(3+4-(5+(6-(7+(8-9)))))) output: 1 good
  *
- *
+ *  95-(12+33) good output: 50
  *
  */
