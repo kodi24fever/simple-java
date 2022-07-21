@@ -95,7 +95,7 @@ public class PA_6 {
                            operands.push(spot);
                            temp = 0;
                        }
-                       else{ // this case precedence is == for both operands
+                       else{ // this case of precedence is == for both operands
                            int prevNumb = numbers.pop();
                            char prev = operands.pop();
                            prevNumb = calculate(prevNumb,temp,prev);
