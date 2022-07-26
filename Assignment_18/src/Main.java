@@ -40,7 +40,7 @@ public class Main {
             if(prev == null || !word.equals(prev))
                 System.out.println(prev = word);
     }
-    private static int binarySerachFindIndex(Comparable[] array, Comparable target) {
+    private static int binarySearchFindIndex(Comparable[] array, Comparable target) {
         int low = 0, high = array.length - 1;
         while(low <= high) {
             int mid = (int)(low/2.0+high/2.0);
