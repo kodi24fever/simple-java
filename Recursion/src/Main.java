@@ -32,10 +32,29 @@ public class Main {
     }
 
 
+
+    public static String recursiveString(String input){
+
+
+        int l = input.length();
+
+        if(l <= 1) {
+            System.out.println("Ended");
+            System.exit(0);
+        }
+
+
+        return recursiveString(input);
+
+    }
+
+
     public static void main(String[] args){
         //myRecursiveMethod("Message");
         //System.out.print(whatDoesThisDo(9));
 
-        System.out.println(whatAboutThis("Hello World!"));
+        //System.out.println(whatAboutThis("Hello World!"));
+
+        //System.out.println(recursiveString("ABCD"));
     }
 }
