@@ -16,9 +16,6 @@ public class Main{
             f(n - 1);
 
             System.out.print("C ");
-            f(n - 1);
-            System.out.print("D ");
-
         }
 
     }
